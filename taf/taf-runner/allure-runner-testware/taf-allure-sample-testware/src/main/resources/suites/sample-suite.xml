@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="CalculatorTest.xml">
+
+    <test name="CalculatorTest">
+        <classes>
+            <class name="com.ericsson.cifwk.SampleTest"/>
+        </classes>
+    </test>
+
+    <test name="CalculatorTest2">
+        <classes>
+            <class name="com.ericsson.cifwk.SampleTest2"/>
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ERICtaf_util</artifactId>
+        <groupId>com.ericsson.cifwk</groupId>
+        <version>2.76.2-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>taf-standalone</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.site.skip>false</maven.site.skip>
+        <maven.site.deploy.skip>false</maven.site.deploy.skip>
+        <swt.version>3.5.1</swt.version>
+    </properties>
+
+    <modules>
+        <module>taf-osgi-agent</module>
+        <module>taf-osgi-agent-test</module>
+        <module>swt-library-bundle</module>
+        <module>taf-swt-agent</module>
+        <module>taf-swt-agent-test</module>
+        <module>taf-swt-bot-client</module>
+        <module>swt-sample-app</module>
+        <module>swt-sample-app-bundle</module>
+    </modules>
+
+    <profiles>
+        <profile>
+            <id>linux</id>
+            <activation>
+                <os>
+                    <family>linux</family>
+                    <arch>!x86</arch>
+                </os>
+            </activation>
+            <properties>
+                <swt.artifactId>org.eclipse.swt.gtk.linux.x86_64</swt.artifactId>
+            </properties>
+        </profile>
+        <profile>
+            <id>unix</id>
+            <activation>
+                <os>
+                    <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <swt.artifactId>org.eclipse.swt.gtk.solaris.x86</swt.artifactId>
+            </properties>
+        </profile>
+        <profile>
+            <id>windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                    <arch>!x86</arch>
+                </os>
+            </activation>
+            <properties>
+                <swt.artifactId>org.eclipse.swt.win32.win32.x86_64</swt.artifactId>
+            </properties>
+        </profile>
+        <profile>
+            <id>linux_x86</id>
+            <activation>
+                <os>
+                    <family>linux</family>
+                    <arch>x86</arch>
+                </os>
+            </activation>
+            <properties>
+                <swt.artifactId>org.eclipse.swt.gtk.linux.x86</swt.artifactId>
+            </properties>
+        </profile>
+        <profile>
+            <id>windows_x86</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                    <arch>x86</arch>
+                </os>
+            </activation>
+            <properties>
+                <swt.artifactId>org.eclipse.swt.win32.win32.x86</swt.artifactId>
+            </properties>
+        </profile>
+    </profiles>
+
+    <repositories>
+        <repository>
+            <id>swt-repo</id>
+            <url>https://swt-repo.googlecode.com/svn/repo/</url>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerId>javac</compilerId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

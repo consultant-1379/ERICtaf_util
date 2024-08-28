@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="MultipleClass Suite">
+    <test name="MultipleClass Test">
+        <classes>
+            <class name="com.ericsson.cifwk.taf.testdata.ConfigMethodsTest" />
+            <class name="com.ericsson.cifwk.taf.testdata.ConfigMethodsTestCopy" />
+        </classes>
+    </test>
+</suite>

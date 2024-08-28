@@ -1,0 +1,3 @@
+#!/bin/sh
+INST_ROOT="/opt/ericsson/com.ericsson.cifwk.taf.monitoring"
+java -Djava.library.path=${INST_ROOT}/lib -cp :${INST_ROOT}/conf/:${INST_ROOT}/jar/* com.ericsson.cifwk.taf.monitoring.agent.Server

@@ -1,0 +1,6 @@
+<aspectj>
+    <aspects>
+        <aspect name="com.ericsson.cifwk.taf.scenario.TestStepInterceptor"/>
+    </aspects>
+</aspectj>
+

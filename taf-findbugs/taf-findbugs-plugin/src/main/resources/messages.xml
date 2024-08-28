@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:noNamespaceSchemaLocation="../../../../../../../../../../../Users/erodunn/temp/taf-findbugs-plugin/src/main/resources/messagecollection.xsd">
+    <Plugin>
+        <ShortDescription>TAF Findbugs plugin</ShortDescription>
+        <Details>Provides additional checks to ensure proper use of TAF</Details>
+    </Plugin>
+
+    <!-- =========================================================== -->
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.WrongLoggingFramework">
+        <Details>
+            <![CDATA[
+<p>This detector ensures Slf4j logging framework is used across testware.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.ui.UseOfUiPause">
+        <Details>
+            <![CDATA[
+<p>This detector looks for usage of UI.pause() in GUI tests.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.StatefulOperator">
+        <Details>
+            <![CDATA[
+<p>This detector checks classes annotated with @Operators don't have internal state fields which are not annotated with @Inject annotation.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.NonFinalStaticFieldInOperator">
+        <Details>
+            <![CDATA[
+<p>This detector checks that classes annotated with @Operators have only final static fields.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.RestrictedInjectAnnotation">
+        <Details>
+            <![CDATA[
+<p>This detector checks that proper @Inject annotation is used. Only javax/inject/Inject is allowed.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.testng.MissingTestId">
+        <Details>
+            <![CDATA[
+<p>This detector looks for TestNG tests without @TestId and @TestSuite annotations. Every test should have one of these annotations.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.ui.FragileXpathSelector">
+        <Details>
+            <![CDATA[
+<p>This detector checks for fragile UI Component selectors, which are likely to break over time.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.UseOfThreadSleep">
+        <Details>
+            <![CDATA[
+<p>This detector checks for usage of Thread.sleep() in tests.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.testng.UsingDependsOnToOrderTests">
+        <Details>
+            <![CDATA[
+<p>This detector checks for tests which are ordered using TestNG's depends on parameter. Individual tests should be independent.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.api.UseOfInternalApi">
+        <Details>
+            <![CDATA[
+<p>This detector looks for usage of TAF internal API (classes annotated with @API(Internal)).</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.api.UseOfDeprecatedApi">
+        <Details>
+            <![CDATA[
+<p>This detector looks for usage of TAF deprecated API (classes annotated with @API(Deprecated)).</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.api.UseOfExperimentalApi">
+        <Details>
+            <![CDATA[
+<p>This detector looks for usage of TAF experimental API (classes annotated with @API(Experimental)).</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.DeprecatedAnnotationOnClass">
+        <Details>
+            <![CDATA[
+<p>This detector looks for usage of @Shared and @VUserScoped annotation which is unnecessary.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.OperatorClassHasNoAnnotation">
+        <Details>
+            <![CDATA[
+<p>This detector looks for classes name end with Operator and checks if they have @Operator annotation.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.TestStepCalledAsMethod">
+        <Details>
+            <![CDATA[
+<p>This detector looks for TestSteps that are called as Java Methods.</p>
+]]>
+        </Details>
+    </Detector>
+
+    <!-- =========================================================== -->
+
+    <BugPattern type="WRONG_LOG">
+        <ShortDescription>Usage of restricted logging framework</ShortDescription>
+        <LongDescription>Restricted Logger found in field {1}</LongDescription>
+        <Details>
+            <![CDATA[
+Only Slf4j Logger is allowed to be used as a logging framework.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="UI_PAUSE">
+        <ShortDescription>UI.pause usage</ShortDescription>
+        <LongDescription>Found UI.pause in method {0}</LongDescription>
+        <Details>
+            <![CDATA[
+UiComponent/ViewModel/BrowserTab.waitUntil... is a much more efficient and maintainable solution than UI.pause. It only waits until the component appears, whereas ui.pause waits a set amount of time regardless of when the component appears.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="NO_TEST_ID">
+        <ShortDescription>Test without Test ID found</ShortDescription>
+        <LongDescription>Found TestNG test without test id in class {0} method {1}</LongDescription>
+        <Details>
+            <![CDATA[
+Register test case in TMS and add test id to this method.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="FRAGILE_SELECTOR">
+        <ShortDescription>Fragile UI Component selector found</ShortDescription>
+        <LongDescription>Found fragile UI Component selector on field {0}</LongDescription>
+        <Details>
+            <![CDATA[
+Use element id selectors and don't use long XPath expressions. They are likely to break over time when UI changes.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="THREAD_SLEEP">
+        <ShortDescription>Thread.sleep usage</ShortDescription>
+        <LongDescription>Found Thread.sleep in method {0}</LongDescription>
+        <Details>
+            <![CDATA[
+It is bad practice to call thread.sleep, and should be avoided where possible
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="DEPENDS_ON_IN_TESTNG_TEST">
+        <ShortDescription>Tests ordered using dependsOn</ShortDescription>
+        <LongDescription>Found that the execution of tests is order using the Test annotation parameter dependsOn in {0}</LongDescription>
+        <Details>
+            <![CDATA[
+Tests should be independent, this also indicates that the tests won't execute in parallel. Tests should be refactored to be independent.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="INTERNAL_API">
+        <ShortDescription>TAF Internal API usage</ShortDescription>
+        <LongDescription>Found usage of TAF Internal API in class {0}</LongDescription>
+        <Details>
+            <![CDATA[
+Classes annotated with @API(Internal) are not part of TAF public API. They have public visibility only because of Java limitations. Internal API can be removed or replaced any time without any warning. You should avoid relying on it.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="DEPRECATED_API">
+        <ShortDescription>TAF Deprecated API usage</ShortDescription>
+        <LongDescription>Found usage of TAF Deprecated API in class {0}</LongDescription>
+        <Details>
+            <![CDATA[
+Classes annotated with @API(Deprecated) may be removed in the upcoming minor release. Please follow instructions in source code to migrate from deprecated API to recommended one.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="EXPERIMENTAL_API">
+        <ShortDescription>TAF Experimental API usage</ShortDescription>
+        <LongDescription>Found usage of TAF Experimental API in class {0}</LongDescription>
+        <Details>
+            <![CDATA[
+Classes annotated with @API(Experimental) are TAF bloody edge. It allows you to use the latest TAF features. It allows TAF to collect feedback from end users. Eventually experimental API will become @API(Stable). But there is also a risk that API may change (in not backward compatible way) or removed completely.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="STATIC_FIELD_IN_OPERATOR">
+        <ShortDescription>Operator contains non-final static field</ShortDescription>
+        <LongDescription>Found static non-final field {1} in Operator {0}</LongDescription>
+        <Details>
+            <![CDATA[
+Operator class should not have static non-final fields. This is considered bad practice and brings flakiness in multi-threaded use of Operator.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="NOT_INJECTED_STATE_FIELD_IN_OPERATOR">
+        <ShortDescription>Operator contains non-final field for storing state.</ShortDescription>
+        <LongDescription>
+            Found field {1} which is used for storing state in Operator {0}.
+            TAF Best practice is to store all state inside Test Context and retrieve variables inside methods.
+            It is allowed to have @Inject annotated fields inside Operator, but type of such fields is limited to:
+            Provider, TestContext and other Operator classes.
+            Following this approach Operator class will be re-usable in multi-threaded context.
+        </LongDescription>
+        <Details>
+            <![CDATA[
+Operator class should not have non-final fields to store state. State will likely produce issues when using with multiple vUsers.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="WRONG_INJECT_ANNOTATION">
+        <ShortDescription>Class contains field annotated with wrong @Inject annotation.</ShortDescription>
+        <LongDescription>Found field {1} which is annotated with wrong inject annotation in class {0}. Use javax/inject/Inject annotation.
+        </LongDescription>
+        <Details>
+            <![CDATA[
+Class should use javax/inject/Inject annotation
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="DEPRECATED_ANNOTATION_ON_CLASS">
+        <ShortDescription>Class contains @Shared/@VUserScoped annotation which is not necessary.</ShortDescription>
+        <LongDescription>Class contains @Shared/@VUserScoped annotation which is not necessary. You can safely remove it.
+        </LongDescription>
+        <Details>
+            <![CDATA[
+@Shared/@VUserScoped annotations are deprecated and is not necessary. Annotations can be safely removed from the class.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="CLASS_HAS_NO_OPERATOR_ANNOTATION">
+        <ShortDescription>Class ends with 'Operator' in it's name but has no @Operator annotation.</ShortDescription>
+        <LongDescription>Class ending with 'Operator' in it's name should have @Operator annotation.</LongDescription>
+        <Details>
+            <![CDATA[
+Class ending with 'Operator' in it's name should have @Operator annotation.
+]]>
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="TESTSTEP_CALLED_AS_JAVA_METHOD">
+        <ShortDescription>TestStep called as Java Method is not allowed</ShortDescription>
+        <LongDescription>TestStep called as Java Method is not allowed</LongDescription>
+        <Details>
+            <![CDATA[
+TestStep called as Java Method is not allowed
+]]>
+        </Details>
+    </BugPattern>
+    <!-- =========================================================== -->
+
+    <BugCode abbrev="WRONG_LOG">Use of banned logging frameworks</BugCode>
+    <BugCode abbrev="UI_PAUSE">Use of UI pause</BugCode>
+    <BugCode abbrev="NO_TEST_ID">Missing TestID for test case</BugCode>
+    <BugCode abbrev="FRAGILE_SELECTOR">Fragile UI Component Selector</BugCode>
+    <BugCode abbrev="THREAD_SLEEP">Use of thread.sleep</BugCode>
+    <BugCode abbrev="DEPENDS_ON_IN_TESTNG_TEST">Tests ordered using dependsOn</BugCode>
+    <BugCode abbrev="INTERNAL_API">Use of TAF Internal API</BugCode>
+    <BugCode abbrev="DEPRECATED_API">Use of TAF Deprecated API</BugCode>
+    <BugCode abbrev="EXPERIMENTAL_API">Use of TAF Experimental API</BugCode>
+    <BugCode abbrev="STATIC_FIELD_IN_OPERATOR">Use of static non-final field in Operator</BugCode>
+    <BugCode abbrev="NOT_INJECTED_STATE_FIELD_IN_OPERATOR">Use of non-injected state field in Operator</BugCode>
+    <BugCode abbrev="WRONG_INJECT_ANNOTATION">Use of com/google/inject/Inject annotation</BugCode>
+    <BugCode abbrev="DEPRECATED_ANNOTATION_ON_CLASS">Use of @Shared/@VUserScoped annotation</BugCode>
+    <BugCode abbrev="CLASS_HAS_NO_OPERATOR_ANNOTATION">@Operator annotation is not used</BugCode>
+    <BugCode abbrev="TESTSTEP_CALLED_AS_JAVA_METHOD">TestStep called as Java Method is not allowed</BugCode>
+
+</MessageCollection>

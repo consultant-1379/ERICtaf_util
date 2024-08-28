@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>taf-standalone</artifactId>
+        <groupId>com.ericsson.cifwk</groupId>
+        <version>2.76.2-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>taf-swt-bot-client</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>ui-test-swt-adaptor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>data-handler</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>taf-osgi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ericsson.cifwk.taf</groupId>
+            <artifactId>jsch-cli-tool</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- SWT -->
+        <dependency>
+            <groupId>org.eclipse.swt</groupId>
+            <artifactId>${swt.artifactId}</artifactId>
+            <version>${swt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- -->
+
+        <!-- Eclipse widgets -->
+        <dependency>
+            <groupId>org.eclipse.ui</groupId>
+            <artifactId>forms</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse</groupId>
+                    <artifactId>jface</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.core</groupId>
+                    <artifactId>runtime</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- -->
+
+        <!-- SWT Bot -->
+        <dependency>
+            <groupId>org.eclipse.swtbot.swt.finder</groupId>
+            <artifactId>org.eclipse.swtbot.swt.finder</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jface</groupId>
+            <artifactId>org.eclipse.jface</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>

@@ -1,0 +1,9 @@
+#!/bin/sh
+INST_ROOT="/opt/ericsson/com.ericsson.cifwk.taf.monitoring"
+
+# Rename jar files that we reference in the CLASSPATH
+/bin/mkdir ${INST_ROOT}/jar/
+/bin/mv ${INST_ROOT}/*.jar ${INST_ROOT}/jar/
+/usr/bin/unzip ${INST_ROOT}/sigar*.zip -d ${INST_ROOT}/sigar/
+/bin/ln -s ${INST_ROOT}/sigar/hyperic-sigar*/sigar-bin/lib/ ${INST_ROOT}/lib
+/bin/rm -f ${INST_ROOT}/sigar*.zip

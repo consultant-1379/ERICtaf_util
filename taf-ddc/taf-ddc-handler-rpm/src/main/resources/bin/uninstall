@@ -1,0 +1,3 @@
+#!/bin/sh
+INST_ROOT="/opt/ericsson/ERICddc/lib"
+

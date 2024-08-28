@@ -1,0 +1,7 @@
+<aspectj>
+<aspects>
+<aspect name="com.ericsson.cifwk.taf.aspects.TestStepAspects"/>
+<aspect name="com.ericsson.cifwk.taf.aspects.AttachmentAspects"/>
+</aspects>
+</aspectj>
+

@@ -1,0 +1,94 @@
+[
+    {
+        "hostname": "host-1",
+        "group": "group-1",
+        "type": "netsim",
+        "ip": "ip-1",
+        "ports": {"http": 8080, "ssh": 22},
+        "offset":0,
+        "users": [
+            {"username": "user", "password": "password", "type": "user"},
+            {"username": "root", "password": "shroot", "type": "admin"}
+        ],
+        "nodes": [
+            {
+                "hostname": "node-1",
+                "ip": "0.0.0.1",
+                "type": "sc1",
+                "users": [
+                    {"username": "root", "password": "shroot", "type": "admin"},
+                    {"username": "guest", "password": "guestp", "type": "oper"}
+                ],
+                "ports": {
+                    "http": 8080, "rmi": 4447, "jmx": 9999, "jboss_management": 9999
+                },
+                "offset":2
+            },
+            {
+                "hostname": "node-2",
+                "ip": "0.0.0.2",
+                "type": "sc2",
+                "users": [
+                    {"username": "root", "password": "shroot", "type": "admin"},
+                    {"username": "guest", "password": "guest", "type": "guest"}
+                ],
+                "ports": {
+                    "http": 8080, "rmi": 4447, "jmx": 9999, "jboss_management": 9999
+                }
+            }
+
+        ]
+
+    },
+    {
+        "hostname": "host-2",
+        "ip": "ip-2",
+        "type": "jboss",
+        "ports": {"http": 8080, "ssh": 22},
+        "users": [
+            {"username": "user", "password": "password", "type": "user"},
+            {"username": "root", "password": "shroot", "type": "admin"}
+        ],
+        "nodes": [
+            {
+                "hostname": "node-1",
+                "ip": "0.0.0.1",
+                "type": "sc1",
+                "users": [
+                    {"username": "root", "password": "shroot", "type": "admin"},
+                    {"username": "guest", "password": "guestp", "type": "oper"}
+                ],
+                "ports": {
+                    "http": 8080, "rmi": 4447, "jmx": 9999, "jboss_management": 9999
+                }
+            },
+            {
+                "hostname": "node-2",
+                "ip": "0.0.0.2",
+                "type": "sc2",
+                "users": [
+                    {"username": "root", "password": "shroot", "type": "admin"},
+                    {"username": "guest", "password": "guest", "type": "guest"}
+                ],
+                "ports": {
+                    "http": 8080, "rmi": 4447, "jmx": 9999, "jboss_management": 9999
+                }
+            }
+
+        ]
+
+    },
+    {
+        "hostname": "host-3",
+        "group": "my-hosts",
+        "ip": "ip-1",
+        "type": "sc1",
+        "offset":4
+    },
+    {
+        "hostname": "host-4",
+        "group": "my-hosts",
+        "ip": "ip-2",
+        "type": "sc2"
+    }
+]

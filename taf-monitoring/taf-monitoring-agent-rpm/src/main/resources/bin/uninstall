@@ -1,0 +1,3 @@
+#!/bin/sh
+INST_ROOT="/opt/ericsson/com.ericsson.cifwk.taf.monitoring"
+/bin/rm -rf  ${INST_ROOT}/lib  ${INST_ROOT}/sigar/  ${INST_ROOT}/jar/

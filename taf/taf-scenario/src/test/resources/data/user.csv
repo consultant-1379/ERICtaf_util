@@ -1,0 +1,8 @@
+username,id,password,roles
+admin,1,Shroot12,"ADMINISTRATOR,op1"
+user1,2,Shroot12,"OPERATOR"
+user2,3,Shroot12,"OPERATOR2,op1"
+#user3,4,Shroot12,"OPERATOR3,op1"
+user4,5,Shroot12,"OPERATOR4,op1"
+user5,6,Shroot12,"OPERATOR5,op1"
+user6,7,Shroot12,"OPERATOR6,op1"

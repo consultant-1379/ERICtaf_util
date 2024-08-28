@@ -1,0 +1,3 @@
+id,title,executor,result,description,priority,context,vusers
+CIP-1060-FUNC_3,Verify that test id is provided in UI elements,erafkos,PASSED,Information has been provided in 20.4 release,HIGH,,
+CIP-1060-FUNC_4,Verify that test id has no performance impacts,erafkos,FAILED,Verification is not possible on current UI,LOW,UI,

@@ -1,0 +1,4 @@
+nodeId,subscription,collection,attribute,value
+1,subscription1,collection1,attr1,111
+2,subscription2,collection2,attr2,222
+3,subscription3,collection3,attr3,333

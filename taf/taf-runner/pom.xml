@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ericsson.cifwk</groupId>
+        <artifactId>taf</artifactId>
+        <version>2.76.2-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>taf-runner</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>allure-commons</module>
+        <module>tms-client</module>
+        <module>test-runner</module>
+        <module>testng-runner</module>
+        <module>junit-runner</module>
+        <module>allure-runner</module>
+        <module>allure-manual-runner</module>
+        <module>allure-runner-java-agent</module>
+        <module>taf-runner-api</module>
+        <module>taf-allure-suite-generator</module>
+    </modules>
+
+    <profiles>
+        <profile>
+            <id>allure-testware</id>
+            <modules>
+                <module>allure-runner-testware</module>
+                <module>junit-runner-testware</module>
+            </modules>
+        </profile>
+    </profiles>
+
+</project>

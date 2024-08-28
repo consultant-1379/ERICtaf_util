@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ConfigurationTest">
+
+ <test name="ConfigurationTest">
+  <classes>
+   <class
+    name="com.ericsson.group.MyTest" />
+  </classes>
+ </test>
+
+</suite>

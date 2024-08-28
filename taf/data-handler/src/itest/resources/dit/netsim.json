@@ -1,0 +1,224 @@
+{
+  "_id": "59b65d316623340015ae2836",
+  "content": {
+    "vm": [
+      {
+        "ip": "10.141.1.119",
+        "hostname": "ieatwlvm5076",
+        "type": "workload",
+        "users": {
+          "username": "root",
+          "password": "12shroot",
+          "type": "admin"
+        },
+        "active": true
+      },
+      {
+        "ip": "10.141.1.100",
+        "hostname": "ieatnetsimv5076-01",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": false
+      },
+      {
+        "ip": "10.141.1.101",
+        "hostname": "ieatnetsimv5076-02",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": false
+      },
+      {
+        "ip": "10.141.1.102",
+        "hostname": "ieatnetsimv5076-03",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": false
+      },
+      {
+        "ip": "10.141.1.103",
+        "hostname": "ieatnetsimv5076-04",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": false
+      },
+      {
+        "ip": "10.141.1.104",
+        "hostname": "ieatnetsimv5076-05",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": false
+      },
+      {
+        "ip": "10.141.1.105",
+        "hostname": "ieatnetsimv5076-06",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": false
+      },
+      {
+        "ip": "10.141.1.106",
+        "hostname": "ieatnetsimv5076-07",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": false
+      },
+      {
+        "ip": "10.141.1.107",
+        "hostname": "ieatnetsimv5076-08",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": false
+      },
+      {
+        "ip": "10.141.1.108",
+        "hostname": "ieatnetsimv5076-09",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": false
+      },
+      {
+        "ip": "10.141.1.109",
+        "hostname": "ieatnetsimv5076-10",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": true
+      },
+      {
+        "ip": "10.141.1.110",
+        "hostname": "ieatnetsimv5076-11",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": true
+      },
+      {
+        "ip": "10.141.1.111",
+        "hostname": "ieatnetsimv5076-12",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": true
+      },
+      {
+        "ip": "10.141.1.112",
+        "hostname": "ieatnetsimv5076-13",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": true
+      },
+      {
+        "ip": "10.141.1.113",
+        "hostname": "ieatnetsimv5076-14",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": true
+      },
+      {
+        "ip": "10.141.1.114",
+        "hostname": "ieatnetsimv5076-15",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": true
+      },
+      {
+        "ip": "10.141.1.115",
+        "hostname": "ieatnetsimv5076-16",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": true
+      },
+      {
+        "ip": "10.141.1.116",
+        "hostname": "ieatnetsimv5076-17",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": true
+      },
+      {
+        "ip": "10.141.1.117",
+        "hostname": "ieatnetsimv5076-18",
+        "type": "netsim",
+        "users": {
+          "username": "netsim",
+          "password": "netsim",
+          "type": "admin"
+        },
+        "active": true
+      }
+    ]
+  },
+  "name": "NetsimWorkload_pca05",
+  "schema_id": "59b7edca6623340015ae284b",
+  "__v": 0,
+  "labels": [ ],
+  "managedconfigs": [ ],
+  "managedconfig": false,
+  "autopopulate": true
+
+}

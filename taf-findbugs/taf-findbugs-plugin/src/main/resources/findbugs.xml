@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:noNamespaceSchemaLocation="findbugsplugin.xsd"
+                pluginid="com.ericsson.cifwk.taf"
+                defaultenabled="true"
+                provider="TAF team"
+                website="https://taf.seli.wh.rnd.internal.ericsson.com">
+
+    <Detector class="com.ericsson.cifwk.taf.findbugs.WrongLoggingFramework" speed="fast" reports="LOG4J_USE"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.ui.UseOfUiPause" speed="fast" reports="UI_PAUSE"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.ui.FragileXpathSelector" speed="fast" reports="FRAGILE_SELECTOR"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.testng.MissingTestId" speed="fast" reports="NO_TEST_ID"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.UseOfThreadSleep" speed="fast" reports="THREAD_SLEEP"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.testng.UsingDependsOnToOrderTests" speed="fast" reports="DEPENDS_ON_IN_TESTNG_TEST"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.api.UseOfInternalApi" speed="fast" reports="INTERNAL_API"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.api.UseOfDeprecatedApi" speed="fast" reports="DEPRECATED_API"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.api.UseOfExperimentalApi" speed="fast" reports="EXPERIMENTAL_API"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.NonFinalStaticFieldInOperator" speed="fast" reports="STATIC_FIELD_IN_OPERATOR"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.StatefulOperator" speed="fast" reports="NOT_INJECTED_STATE_FIELD_IN_OPERATOR"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.RestrictedInjectAnnotation" speed="fast" reports="WRONG_INJECT_ANNOTATION"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.DeprecatedAnnotationOnClass" speed="fast" reports="DEPRECATED_ANNOTATION_ON_CLASS"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.OperatorClassHasNoAnnotation" speed="fast" reports="CLASS_HAS_NO_OPERATOR_ANNOTATION"/>
+    <Detector class="com.ericsson.cifwk.taf.findbugs.scenarios.TestStepCalledAsMethod" speed="fast" reports="TESTSTEP_CALLED_AS_JAVA_METHOD"/>
+
+    <BugPattern abbrev="DEPENDS_ON_IN_TESTNG_TEST" type="DEPENDS_ON_IN_TESTNG_TEST" category="TAF" />
+    <BugPattern abbrev="WRONG_LOG" type="WRONG_LOG" category="TAF" />
+    <BugPattern abbrev="UI_PAUSE" type="UI_PAUSE" category="TAF" />
+    <BugPattern abbrev="FRAGILE_SELECTOR" type="FRAGILE_SELECTOR" category="TAF" />
+    <BugPattern abbrev="NO_TEST_ID" type="NO_TEST_ID" category="TAF" />
+    <BugPattern abbrev="THREAD_SLEEP" type="THREAD_SLEEP" category="TAF" />
+    <BugPattern abbrev="INTERNAL_API" type="INTERNAL_API" category="TAF" />
+    <BugPattern abbrev="DEPRECATED_API" type="DEPRECATED_API" category="TAF" />
+    <BugPattern abbrev="EXPERIMENTAL_API" type="EXPERIMENTAL_API" category="TAF" />
+    <BugPattern abbrev="NOT_INJECTED_STATE_FIELD_IN_OPERATOR" type="NOT_INJECTED_STATE_FIELD_IN_OPERATOR" category="TAF" />
+    <BugPattern abbrev="STATIC_FIELD_IN_OPERATOR" type="STATIC_FIELD_IN_OPERATOR" category="TAF" />
+    <BugPattern abbrev="WRONG_INJECT_ANNOTATION" type="WRONG_INJECT_ANNOTATION" category="TAF" />
+    <BugPattern abbrev="DEPRECATED_ANNOTATION_ON_CLASS" type="DEPRECATED_ANNOTATION_ON_CLASS" category="TAF" />
+    <BugPattern abbrev="CLASS_HAS_NO_OPERATOR_ANNOTATION" type="CLASS_HAS_NO_OPERATOR_ANNOTATION" category="TAF" />
+    <BugPattern abbrev="TESTSTEP_CALLED_AS_JAVA_METHOD" type="TESTSTEP_CALLED_AS_JAVA_METHOD" category="TAF" />
+
+</FindbugsPlugin>

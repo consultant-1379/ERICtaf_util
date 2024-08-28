@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="MultipleTests Suite">
+    <test name="MultipleTests Test 1">
+        <classes>
+            <class name="com.ericsson.cifwk.taf.testdata.ConfigMethodsTest" />
+        </classes>
+    </test>
+    <test name="ParallelMultipleTests Test 2">
+        <classes>
+            <class name="com.ericsson.cifwk.taf.testdata.ConfigMethodsTestCopy" />
+        </classes>
+    </test>
+</suite>

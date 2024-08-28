@@ -1,0 +1,94 @@
+[
+    {
+        "hostname": "host-1",
+        "ip": "ip-1",
+        "type": "type-1",
+        "ports": {"http": 8080, "ssh": 22, "abc":5},
+        "offset":0,
+        "tunnel":1,
+        "users": [
+            {"username": "user", "password": "password", "type": "user"},
+            {"username": "root", "password": "shroot", "type": "admin"}
+        ],
+        "nodes": [
+            {
+                "hostname": "node-1",
+                "ip": "0.0.0.1",
+                "type": "type-1",
+                "users": [
+                    {"username": "root", "password": "shroot", "type": "admin"},
+                    {"username": "guest", "password": "guestp", "type": "oper"}
+                ],
+                "ports": {
+                    "http": 8080, "rmi": 4447, "jmx": 9999, "jboss_management": 9999
+                },
+                "offset":2,
+                "tunnel":3
+            },
+            {
+                "hostname": "node-2",
+                "ip": "0.0.0.2",
+                "type": "type-2",
+                "users": [
+                    {"username": "root", "password": "shroot", "type": "admin"},
+                    {"username": "guest", "password": "guest", "type": "guest"}
+                ],
+                "ports": {
+                    "http": 8080, "rmi": 4447, "jmx": 9999, "jboss_management": 9999
+                }
+            }
+
+        ]
+
+    },
+    {
+        "hostname": "host-2",
+        "ip": "ip-2",
+        "type": "type-2",
+        "ports": {"http": 8080, "ssh": 22, "abc":5},
+        "users": [
+            {"username": "user", "password": "password", "type": "user"},
+            {"username": "root", "password": "shroot", "type": "admin"}
+        ],
+        "nodes": [
+            {
+                "hostname": "node-1",
+                "ip": "0.0.0.1",
+                "type": "type-1",
+                "users": [
+                    {"username": "root", "password": "shroot", "type": "admin"},
+                    {"username": "guest", "password": "guestp", "type": "oper"}
+                ],
+                "ports": {
+                    "http": 8080, "rmi": 4447, "jmx": 9999, "jboss_management": 9999
+                }
+            },
+            {
+                "hostname": "node-2",
+                "ip": "0.0.0.2",
+                "type": "type-2",
+                "users": [
+                    {"username": "root", "password": "shroot", "type": "admin"},
+                    {"username": "guest", "password": "guest", "type": "guest"}
+                ],
+                "ports": {
+                    "http": 8080, "rmi": 4447, "jmx": 9999, "jboss_management": 9999
+                }
+            }
+
+        ]
+
+    },
+    {
+        "hostname": "host-3",
+        "ip": "ip-1",
+        "type": "type-1",
+        "offset":4
+    },
+    {
+        "hostname": "host-4",
+        "ip": "ip-2",
+        "type": "type-2",
+        "tunnel":5
+    }
+]

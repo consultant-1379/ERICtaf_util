@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="ParallelMethods Suite" parallel="methods" thread-count="3">
+    <test name="ParallelMethods Test">
+        <classes>
+            <class name="com.ericsson.cifwk.taf.testdata.ConfigMethodsTest" />
+        </classes>
+    </test>
+</suite>

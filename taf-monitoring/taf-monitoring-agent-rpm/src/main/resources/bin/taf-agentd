@@ -1,0 +1,220 @@
+#!/bin/bash
+
+#
+# chkconfig: 2345 80 30
+# description: starts and stops the ddc agent.
+#
+
+# Initialisation script for DDC.
+# Ths script can be called by svc or init.d.
+# Following init info is for insserv.
+### BEGIN INIT INFO
+# Provides: Diagnostic Data Collection
+# Required-Start:
+# Default-Start: 3
+# Default-Stop: 0 6
+# Short-Description: boot script for DDC
+# Description: boot script for DDC
+### END INIT INFO
+
+# Are we a symbolic link? E.g. an init.d script
+# Dereference the symlink several times if required
+FILENAME=$0
+while [ -L ${FILENAME} ] ; do
+    FILEDIR=$(/usr/bin/dirname ${FILENAME})
+    cd ${FILEDIR}
+    FILENAME=$(/bin/ls -l $(/bin/basename ${FILENAME}) | /usr/bin/awk '{print $NF}')
+done
+
+DDCDIR=$(/usr/bin/dirname $FILENAME)
+# XXX: This behaviour relies on shell builtins for cd and pwd
+DDCDIR=$(cd ${DDCDIR}/.. ; pwd)
+
+if [ ! -f "${DDCDIR}/etc/global.env" ] ; then
+    echo "ERROR: no environment file: ${DDCDIR}/etc/global.env"
+    exit 1
+fi
+set -a
+# remove the dataroot.env if present, to allow it to be regenerated
+# This is in case the DDCDIR has been copied from elsewhere
+DATAROOT_FILE=${DDCDIR}/etc/dataroot.env
+[ -f "${DATAROOT_FILE}" ] && /bin/rm ${DATAROOT_FILE}
+
+. ${DDCDIR}/etc/global.env
+
+COMMAND_FILE=${DATAROOT}/.ddcCommand
+EXIT_FILE=${DATAROOT}/.ddcExit
+
+# initialise log directory
+if [ ! -d "${DATAROOT}/log" ] ; then
+    $_MKDIR -p ${DATAROOT}/log
+fi
+
+# function to initialise / re-initialise logging output
+startLogging() {
+    if [ -z "${DDC_LOG}" ] ; then
+        echo "WARNING: DDC_LOG not defined - STDOUT and STDERR unchanged"
+        return
+    fi
+    [ ! -f "${DDC_LOG}" ] && $_TOUCH ${DDC_LOG}
+    # redirect my stdout and stderr to $DDC_LOG
+    exec 1>>${DDC_LOG}
+    exec 2>>${DDC_LOG}
+}
+
+# function to check we are still writing to the
+# correct log file
+checkLog() {
+    NEW_LOG=$(getLogFileName)
+    if [ "${NEW_LOG}" != "${DDC_LOG}" ] && [ ! -z "${NEW_LOG}" ] ; then
+        DDC_LOG=${NEW_LOG}
+        # remove log files older than MAX_DAYS
+        [ -z "${MAX_DAYS}" ] && MAX_DAYS=28
+        $_FIND $(dirname ${DDC_LOG}) -mtime +${MAX_DAYS} -name "ddc.log.*" -exec /bin/rm -f \{\} \;
+    fi
+    # Always start logging each time we call checklog - this should solve the situation where the file
+    # descriptor we are looking at has disappeared between checks.
+    # If this doesn't work, the next change is to log each command's output to a temporary file and then concatenate
+    # the output to the main log file in one go at the end.
+    startLogging
+}
+
+# function to check whether a particular DDC task is already running
+checkTask() {
+    TASK=$1
+    TASKS=$($_PS -ef | $_GREP "${MONITORDIR}/monitorTasks $TASK" | $_GREP -v $_GREP)
+    if [ ! -z "${TASKS}" ] ; then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+doInit() {
+    log "Initialising DDC"
+    if [ $(checkTask INIT) = 1 ] ; then
+        return
+    fi
+    # don't background this task
+    ${MONITORDIR}/monitorTasks INIT
+}
+
+doStart() {
+    log "Starting daily processing"
+    # are there any START tasks already running?
+    if [ $(checkTask START) = 1 ] ; then
+        return
+    fi
+    ${MONITORDIR}/monitorTasks START &
+}
+
+doStop() {
+    log "Stopping daily processing"
+    if [ $(checkTask STOP) = 1 ] ; then
+        return
+    fi
+    ${MONITORDIR}/monitorTasks STOP &
+}
+
+doTrigger() {
+    log "Triggering DDC"
+    if [ $(checkTask TRIGGER) = 1 ] ; then
+        return
+    fi
+    ${MONITORDIR}/monitorTasks TRIGGER &
+}
+
+
+
+doMakeTar() {
+    log "Making tar file"
+    if [ $(checkTask MAKETAR) = 1 ] ; then
+        return
+    fi
+    ${MONITORDIR}/monitorTasks MAKETAR &
+}
+
+doShutdown() {
+    $_TOUCH ${EXIT_FILE}
+    # Check we're not in the middle of startup, otherwise some services may
+    # start which never exit
+    while [ $(checkTask START) = 1 ] ; do
+        sleep 1
+    done
+    ${MONITORDIR}/monitorTasks SHUTDOWN
+}
+
+# monitor function to listen for input commands
+# TODO: create PID file, and use it in shutdown
+ddcMonitor() {
+    startLogging
+    MYPID=$$
+    log "DDC Starting: PID ${MYPID}"
+    # If the appl.env file is empty, delete it so the system has an
+    # opportunity to check for applications again
+    [ ! -s ${DDCDIR}/etc/appl.env ] && $_RM -f ${DDCDIR}/etc/appl.env
+    # clean up any exit files
+    [ -f ${EXIT_FILE} ] && $_RM -f ${EXIT_FILE}
+    # Set correct permissions on the DATAROOT directory
+    [ ! -d ${DATAROOT} ] && $_MKDIR -p ${DATAROOT}
+    $_CHOWN root:${DDC_GRP} ${DATAROOT}
+    $_CHMOD 775 ${DATAROOT}
+    # doInit in monitorTasks handles calling doStart
+    echo "doInit"
+    doInit
+    while [ ! -f ${EXIT_FILE} ] ; do
+        # loop waiting for something to do
+        sleep 1
+        if [ -f ${COMMAND_FILE} ] ; then
+            # check we're writing to the correct log file
+            echo "checkLog"
+            checkLog
+            # read the command and do the action
+            CMD=$($_CAT ${COMMAND_FILE})
+            $_RM -f ${COMMAND_FILE}
+            case ${CMD} in
+                START) doStart ;;
+                STOP) doStop ;;
+                TRIGGER) doTrigger ;;
+                MAKETAR) doMakeTar ;;
+                SHUTDOWN) doShutdown ;;
+                *) log "ERROR: Unknown command: ${CMD}" ;;
+            esac
+        fi
+    done
+    checkLog
+    log "DDC exiting"
+    ${MONITORDIR}/monitorTasks SHUTDOWN
+}
+
+# handle control action
+case $1 in
+    start)
+    if [ -f "${DDC_DISABLE_FILE}" ] ; then
+        echo "DDC is disabled, aborting initialisation"
+        # wait for an explicit disable from SMF - this should be called
+        # from the install script if DDC was disabled prior to upgrade
+        while [ ! -f ${EXIT_FILE} ] ; do
+            sleep 1
+        done
+        exit 0
+    fi
+    ddcMonitor &
+    ;;
+    stop)
+    doShutdown
+    ;;
+    status)
+        if [ $($_PS -ef | $_EGREP -i "/etc/(rc[0-6].d|init.d)/([A-Z][0-9]{2}|)ddc start" | $_GREP -v grep | $_WC -l) -eq 1 ] ; then
+            PID=$($_PS -ef | $_EGREP -i "/etc/(rc[0-6].d|init.d)/([A-Z][0-9]{2}|)ddc start" | $_GREP -v grep | $_AWK '{print $2}')
+            echo "ddc (pid $PID) is running..." 
+        else
+            echo "ddc is stopped"
+        fi
+    ;;
+    *)
+    # assume this is a standard command
+    $_ECHO $1 > ${COMMAND_FILE}
+    ;;
+esac
+

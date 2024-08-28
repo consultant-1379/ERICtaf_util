@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<instr xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="/opt/ericsson/ERICddc/util/etc/instr/schemas/instr.xsd">
+
+    <!-- this is a template used to build a "proper" file containing references
+    for a generic JMX instance. Replace "OUTPUT_NAME" with the output string and
+    "SEARCH_STRING" with the search string. -->
+    <profile name="event-repository-jmx">
+        <description>A profiler for EventRepository to collect generic JVM information</description>
+        <outputHandler type="taf" />
+        <provider type="proc" name="Resources">
+            <metricGroup name="OS" type="Memory">
+                <metric name="MemTotal"/>
+                <metric name="MemFree"/>
+            </metricGroup>
+            <metricGroup name="OS" type="CPU">
+                <metric name="CpuUser"/>
+                <metric name="CpuSystem"/>
+                <metric name="CpuIowait"/>
+                <metric name="CpuIdle"/>
+            </metricGroup>
+        </provider>
+    </profile>
+
+</instr>

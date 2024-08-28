@@ -1,0 +1,418 @@
+{
+    "commands": [
+        {"cmd": ".show simulations"},
+        {"cmd": ".show simnes"},
+        {"cmd": ".show simne", "args": [
+            {"name": "object"}
+        ]},
+        {"cmd": ".show fs"},
+        {"cmd": ".show started"},
+        {"cmd": ".show allsimnes"},
+        {"cmd": ".popselected"},
+        {"cmd": ".pushselected"},
+        {"cmd": ".open", "args": [{"name": "simulation"}]},
+        {"cmd": ".start", "args": [
+            {"name": "-force_new_server", "type": "flag"},
+            {"name": "-sequential", "type": "flag"},
+            {"name": "-parallel", "type": "flag"},
+            {"name": "count"}
+        ]},
+        {"cmd": ".stop", "args": [
+            {"name": "-parallel", "type": "flag"}
+        ]},
+        {"cmd": ".selectnocallback", "args": [
+            {"name": "objects", "type": "vararg"}
+        ]},
+        {"cmd": ".new simulation", "args": [{"name": "simulation"}]},
+        {"cmd": ".new exception", "args": [{"name": "exception"}]},
+        {"cmd": ".new component", "args": [{"name": "object"}]},
+        {"cmd": ".new simne", "args": [
+            {"name": "-auto", "type": "flag"},
+            {"name": "no-of-objects"},
+            {"name": "base-name"},
+            {"name": "start-index"},
+            {"name": "objects", "type": "vararg"}
+        ]},
+        {"cmd": ".set netype", "args": [{"name": "NE type"}]},
+        {"cmd": ".set save"},
+        {"cmd": ".set fs", "args": [
+            {"name": "resource"},
+            {"name": "dir"}
+        ]},
+        {"cmd": ".set taggedaddr", "args": [
+            {"name": "tag"},
+            {"name": "sub-addr"},
+            {"name": "increment"}
+        ]},
+        {"cmd": ".set ssliop", "args": [
+            {"name": "security-state"},
+            {"name": "SSL security definition"}
+        ]},
+        {"cmd": ".set port", "args": [{"name": "port"}]},
+        {"cmd": ".delete"},
+        {"cmd": ".sendparallel", "args": [
+          {"name": "file"},
+          {"name": "logprefix"},
+          {"name": "time-between-pipes", "optional": "true"}
+        ]}
+        {"cmd": "avcburst", "args": [
+            {"name": "id"},
+            {"name": "freq", "type": "float"},
+            {"name": "duration", "type": "long"},
+            {"name": "num_events", "type": "int"},
+            {"name": "mode", "type": "enum", "values": ["temp", "persistent", "permanent"]},
+            {"name": "loop", "type": "boolean"},
+            {"name": "idle_time", "type": "long"},
+            {"name": "avcdata", "type": "proplist"}
+        ]},
+        {"cmd": "alarmburst", "args": [
+            {"name": "alr", "type": "boolean"},
+            {"name": "freq", "type": "float"},
+            {"name": "duration", "type": "int"},
+            {"name": "num_alarms", "type": "int"},
+            {"name": "loop", "type": "boolean"},
+            {"name": "idle_time", "type": "long"},
+            {"name": "mo_class"},
+            {"name": "mo_instance"},
+            {"name": "system_dn"},
+            {"name": "mode", "type": "enum", "values": ["temp", "persistent", "permanent"]},
+            {"name": "cause", "type": "int"},
+            {"name": "severity", "type": "int"},
+            {"name": "problem"},
+            {"name": "text"},
+            {"name": "type"},
+            {"name": "cease_after", "type": "long"},
+            {"name": "clear_after_burst", "type": "boolean"},
+            {"name": "id"}
+        ]},
+        {"cmd": "stopburst", "args": [
+            {"name": "id", "quoted": "false"}
+        ]},
+        {"cmd": "createscanner2", "args": [
+            {"name": "id", "quoted": "false"},
+            {"name": "measurement_name"},
+            {"name": "file"},
+            {"name": "time", "type": "int"},
+            {"name": "state", "type": "enum", "values": ["ACTIVE", "SUSPENDED"], "quoted": "true"}
+        ]},
+        {"cmd": "deletescanner2", "args": [
+            {"name": "id", "quoted": "false"}
+        ]},
+        {"cmd": "suspendpms", "args": [
+            {"name": "id", "quoted": "false"}
+        ]},
+        {"cmd": "dumpmotree", "args": [
+            {"name": "moid"},
+            {"name": "scope", "type": "int"},
+            {"name": "printattrs", "type": "flag"},
+            {"name": "ker_out", "type": "flag"},
+            {"name": "moidcomment", "type": "flag"},
+            {"name": "xml_out", "type": "enum", "values":["transport_out", "radio_out", "both"]},
+            {"name": "xsd_dir"},
+            {"name": "validate", "type": "flag"},
+            {"name": "dotty", "type": "flag"},
+            {"name": "pm_job", "type": "flag"},
+            {"name": "pm_class_job", "type": "flag"},
+            {"name": "pm_value", "type": "flag"},
+            {"name": "outputfile"},
+            {"name": "excludeattrs", "type": "vararg"},
+            {"name": "includeattrs", "type": "vararg"},
+            {"name": "motypes", "type": "vararg"}
+        ]},
+         {"cmd": "setmibinfo", "args": [
+            {"name": "name"},
+            {"name": "type"},
+            {"name": "version"},
+            {"name": "prefix"},
+        ]}
+        {"cmd": "kertayle", "args": [
+            {"name": "file"},
+            {"name": "commit_freq", "type": "enum", "values": ["script", "operation"]},
+            {"name": "send_notifs", "type": "enum", "values": ["send", "do_not_send"]},
+            {"name": "skip_verify", "type": "enum", "values": ["skip", "do_not_skip"]}
+        ]},
+        {"cmd": "createmo", "args": [
+            {"name": "parentid"},
+            {"name": "type"},
+            {"name": "name"},
+            {"name": "quantity", "type": "int"},
+            {"name": "attributes", "optional": "true"}
+        ]},
+        {"cmd": "setmoattribute", "args": [
+            {"name": "mo"},
+            {"name": "attributes"}
+        ]},
+        {"cmd": "deletemo", "args": [
+            {"name": "moid"}
+         ]},
+        {"cmd": "showscanners2"},
+        {"cmd": ".echo", "args": [
+            {"name": "output"}
+        ]},
+        {"cmd": "status", "args": [
+            {"name": "sec", "type": "flag"},
+            {"name": "ipsec", "type": "flag"},
+            {"name": "as", "type": "flag"},
+            {"name": "cs", "type": "flag"},
+            {"name": "pm", "type": "flag"}
+        ]},
+        {"cmd": "gencmdshell"},
+        {"cmd": "ceasealarm","args": [
+            {"name": "all" },
+            {"name": "cease_alarm", "quoted": "false", "requiresAssignment": "false"},
+            {"name": "id", "type": "int"}
+        ]},
+        {"cmd": "sendalarm", "args": [
+            {"name": "instance", "optional": "true"},
+            {"name": "type", "optional": "true"},
+            {"name": "systemDN", "optional": "true"},
+            {"name": "managed_object", "optional": "true"},
+            {"name": "cause", "type": "int", "optional": "true"},
+            {"name": "probable_cause", "optional": "true"},
+            {"name": "severity", "type": "int", "optional": "true"},
+            {"name": "problem", "optional": "true"},
+            {"name": "specific_problem", "optional": "true"},
+            {"name": "event", "type": "int", "optional": "true"},
+            {"name": "event_type", "optional": "true"},
+            {"name": "alarm_type", "optional": "true"},
+            {"name": "text", "optional": "true"},
+            {"name": "additional_text", "optional": "true"},
+            {"name": "time", "type": "long", "optional": "true"},
+            {"name": "tdf", "type": "long", "optional": "true"}
+        ]},
+        {"cmd": "sendalarm_ecm", "args": [
+          {"name": "eventType", "type": "int"},
+          {"name": "probableCause", "type": "int"},
+          {"name": "severity", "type": "int"},
+          {"name": "tenantName"}
+        ]},
+        {"cmd": "showalarm","args": [
+            {"name": "hist" }
+        ]},
+        {"cmd": "send_notif", "args": [
+            {"name": "notification", "type": "enum", "values": ["cmsync", "replaytime"], "requiresAssignment": "false"}
+        ]},
+        {"cmd": "trap", "args": [
+          {"name": "name"},
+          {"name": "bindings", "optional": "true"}
+        ]},
+        {"cmd": "sendevent", "args": [
+            {"name": "instance"},
+            {"name": "systemDN"},
+            {"name": "specificevent"},
+            {"name": "text"},
+            {"name": "type"},
+            {"name": "info"},
+            {"name": "time", "type": "long"},
+            {"name": "tdf", "type": "long"}
+        ]},
+        {"cmd": ".setssliop createormodify","args": [
+            {"name": "securityDefinitionName" }
+        ]},
+        {"cmd": ".setssliop description","args": [
+            {"name": "description" }
+        ]},
+        {"cmd": ".setssliop clientcertfile","args": [
+            {"name": "clientCertFilePath" }
+        ]},
+        {"cmd": ".setssliop clientcacertfile","args": [
+            {"name": "clientCaCertFilePath" }
+        ]},
+        {"cmd": ".setssliop clientkeyfile","args": [
+            {"name": "clientKeyFilePath" }
+        ]},
+        {"cmd": ".setssliop clientpassword","args": [
+            {"name": "clientPassword" }
+        ]},
+        {"cmd": ".setssliop clientverify","args": [
+            {"name": "clientVerifyNumber" }
+        ]},
+        {"cmd": ".setssliop clientdepth","args": [
+            {"name": "clientDepthNumber" }
+        ]},
+        {"cmd": ".setssliop servercertfile","args": [
+            {"name": "serverCertFilePath" }
+        ]},
+        {"cmd": ".setssliop servercacertfile","args": [
+            {"name": "serverCaCertFilePath" }
+        ]},
+        {"cmd": ".setssliop serverkeyfile","args": [
+            {"name": "serverKeyFilePath" }
+        ]},
+        {"cmd": ".setssliop serverpassword","args": [
+            {"name": "serverPassword" }
+        ]},
+        {"cmd": ".setssliop serververify","args": [
+            {"name": "serverVerifyNumber" }
+        ]},
+        {"cmd": ".setssliop serverdepth","args": [
+            {"name": "serverDepthNumber" }
+        ]},
+        {"cmd": ".setssliop protocol_version","args": [
+            {"name": "protocolVersion" }
+        ]},
+        {"cmd": ".setssliop save force"},
+        {"cmd": ".show ssliop", "args": [
+            {"name": "securityDefinitions"}
+        ]},
+        {"cmd": ".setssliop delete","args": [
+            {"name": "securityDefinitionName" }
+        ]},
+        {"cmd": ".setssliop list"},
+        {"cmd": "sendcsnotif", "args": [
+            {"name": "type", "type": "enum", "values": ["MOCreatedType", "MODeletedType","AVCType","OverflowType"]},
+            {"name": "mo"},
+            {"name": "attributes"},
+            {"name": "count","type": "int"},
+            {"name": "info","type": "flag"}
+        ]},
+        {"cmd": ".restorenedatabase", "args": [
+            {"name": "fileLocation"}
+        ]},
+        {"cmd": ".savenedatabase", "args": [
+            {"name": "imageName"}
+        ]},
+        {"cmd": ".deletenedatabase"},
+        {"cmd": "showlastalarmseqid", "args": [
+        ]},
+        {"cmd": "setconfiguration", "args": [
+            {"name": "configured"}
+        ]},
+        {"cmd": "setheartbeat", "args": [
+            {"name": "interval","type": "int"},
+            {"name": "units"}
+        ]},
+        {"cmd": "sequence_reset", "args": [
+            {"name": "attr", "type": "enum", "values": ["true", "false","status"], "quoted": "false", "requiresAssignment": "false"}
+        ]},
+        {"cmd": "alarmlistrebuild"},
+        {"cmd": "setpdckpi","args": [
+            {"name": "attr" },
+            {"name": "val"}
+        ]},
+        {"cmd": "startlogger","args": [
+            {"name": "type" },
+            {"name": "interval","type":"long"}
+        ]},
+        {"cmd": ".isstarted"},
+        {"cmd": ".arneconfig rootmo","args": [
+            {"name": "rootMoString"}
+        ]},
+        {"cmd": ".createarne","args": [
+            {"name": "ossVersion"},
+            {"name": "filenamePrefix"},
+            {"name": "network"},
+            {"name": "userName"},
+            {"name": "password"},
+            {"name": "typeIPOrFQDN"},
+            {"name": "secureOrNormal"},
+            {"name": "sitesOrNoSites"},
+            {"name": "externalAssosiations"},
+            {"name": "groupsOrDefaultGroups"},
+            {"name": "nename"},
+            {"name": "nodeList"}
+        ]},
+        {"cmd": ".select", "args": [{"name": "exception_name"}]},
+        {"cmd": ".exception", "args": [{"name": "exception_status"}]},
+        {"cmd": ".set language", "args": [{"name": "language"}]},
+        {"cmd": ".set priority", "args": [{"name": "priority", "type": "int"}]},
+        {"cmd": ".set commands", "args": [{"name": "command"}]},
+        {"cmd": ".set condition", "args": [{"name": "condition"}]},
+        {"cmd": ".set action", "args": [
+            {"name": "action"},
+            {"name": "action_parameters"}
+        ]},
+        {"cmd": ".set external", "args": [
+            {"name": "default-destination", "quoted": "false"}
+        ]},
+        {"cmd": ".config add port", "args": [
+            {"name": "port", "quoted": "false"},
+            {"name": "protocol", "quoted": "false"},
+            {"name": "server", "quoted": "false"}
+        ]},
+        {"cmd": ".config port address", "args": [
+            {"name": "port", "quoted": "false"},
+            {"name": "address", "quoted": "false"},
+            {"name": "address-part2", "quoted": "false"}
+        ]},
+        {"cmd": ".config save"},
+        {"cmd": ".select configuration"},
+        {"cmd": "ldap", "args": [
+            {"name": "tool", "type": "enum", "values": ["bind", "search","add","delete"], "quoted": "false", "requiresAssignment": "false"},
+            {"name": "host", "quoted": "false"},
+            {"name": "dn"},
+            {"name": "base"},
+            {"name": "filter"},
+            {"name": "password", "quoted": "false"}
+        ]},
+        {"cmd": ".switchmim", "args": [
+            {"name": "system", "quoted": "false"},
+            {"name": "type", "quoted": "false"},
+            {"name": "version", "quoted": "false"},
+            {"name": "-pretend","type": "flag"},
+            {"name": "-verbose","type": "flag"},
+            {"name": "-nowarn","type": "flag"},
+            {"name": "-force_attr_reset ","type": "flag"},
+            {"name": "-force_struct_reset ","type": "flag"}
+        ]},
+        {"cmd": "getmoid", "args": [
+            {"name": "ldn"}
+        ]},
+        {"cmd": "ignoreport", "args": [
+            {"name": "attr", "type": "enum", "values": ["true", "false","status"], "quoted": "false", "requiresAssignment": "false"}
+        ]},
+        {"cmd": "pmEventModel", "args": [
+            {"name": "source"}
+        ]},
+        {"cmd": "secureport", "args": [
+            {"name": "turn", "type": "enum", "values": ["on", "off"], "quoted": "true", "optional": "true"},
+            {"name": "status", "type": "flag", "optional": "true"},
+            {"name": "removeConfig", "type": "flag", "optional": "true"}
+        ]},
+        {"cmd": "oseshellconfig", "args": [
+            {"name": "prompt"},
+            {"name": "motd"},
+            {"name": "llog"},
+            {"name": "telog"},
+            {"name": "vii"},
+            {"name": "show", "type": "flag"},
+            {"name": "setdefault", "type": "flag"}
+        ]},
+        {"cmd": "set", "args" : [
+          {"name": "varbinds"}
+        ]},
+        {"cmd": "get", "args" : [
+          {"name": "oids"}
+        ]},
+        {"cmd": "unix", "args" : [
+          {"name": "cmd"}
+         ]},
+        {"cmd": "e netsim_snmp_oiddb", "args": [
+          {"name": "set_scalar"}
+        ]},
+        {"cmd": "setswinstallvariables", "args": [
+          {"name": "nodeRestart", "type": "boolean"},
+          {"name": "restartDelay", "type": "int"}
+        ]},
+        {"cmd": ".config add external", "args": [
+            {"name": "Def_dest_name", "quoted": "false"},
+            {"name": "protocol", "quoted": "false"}
+        ]},
+        {"cmd": ".config external servers", "args": [
+          {"name": "Def_dest_name", "quoted": "false"},
+          {"name": "server_name", "quoted": "false"}
+        ]},
+        {"cmd": ".config external address", "args": [
+          {"name": "Def_dest_name", "quoted": "false"},
+          {"name": "managerIpAddress", "quoted": "false"},
+          {"name": "managerUdpPort", "quoted": "false"},
+          {"name": "notificationType", "quoted": "false"}
+        ]},
+        {"cmd": "bsc_configure_delay", "args": [
+          {"name": "delay", "type": "int"},
+          {"name": "failedDnsAndAttributes"},
+          {"name": "errorMessage"},
+          {"name": "reset_transaction", "type": "flag"}
+        ]},
+    ]
+}

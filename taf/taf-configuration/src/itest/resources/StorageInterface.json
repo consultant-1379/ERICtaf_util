@@ -1,0 +1,117 @@
+[{
+  "ip": "192.168.0.42",
+  "hostname": "ms1",
+  "type": "ms",
+  "ports": {
+    "ssh": 22
+  },
+  "users": [{
+    "username": "root",
+    "password": "12shroot",
+    "type": "admin"
+  }]
+},
+  {
+    "users": [{
+      "username": "litp-admin",
+      "password": "12shroot",
+      "type": "admin"
+    }],
+    "interfaces": [{
+      "ports": {
+        "ssh": 22
+      },
+      "hostname": null,
+      "type": "public",
+      "ipv4": "192.168.0.202",
+      "ipv6": "None"
+    },
+      {
+        "ports": {
+          "ssh": 22
+        },
+        "hostname": null,
+        "type": "bridge",
+        "ipv4": "10.247.246.2",
+        "ipv6": "None"
+      },
+      {
+        "ports": {
+          "ssh": 22
+        },
+        "hostname": null,
+        "type": "backup",
+        "ipv4": "172.16.29.97",
+        "ipv6": "None"
+      },
+      {
+        "ports": {
+          "ssh": 22
+        },
+        "hostname": null,
+        "type": "multicast",
+        "ipv4": null,
+        "ipv6": null
+      }],
+    "hostname": "svc1",
+    "type": "svc1",
+    "nodes":
+    [{
+      "group": "fmserv",
+      "users": [{
+        "username": "root",
+        "password": "passw0rd",
+        "type": "admin"
+      }],
+      "interfaces": [
+        {
+          "ports": {
+            "jboss_management": 9999,
+            "jmx": 9999,
+            "rmi": 4447,
+            "http": 8080,
+            "ssh": 22
+          },
+          "hostname": null,
+          "type": "storage",
+          "ipv4": "172.16.30.128",
+          "ipv6": null
+        }],
+      "hostname": "fmserv_1",
+      "type": "jboss",
+      "ports": {
+        "ssh": 22
+      },
+      "unit": 1
+    },
+      {
+        "group": "pmserv",
+        "users": [{
+          "username": "root",
+          "password": "passw0rd",
+          "type": "admin"
+        }],
+        "interfaces": [{
+          "ports": {
+            "jboss_management": 9999,
+            "jmx": 9999,
+            "rmi": 4447,
+            "http": 8080,
+            "ssh": 22
+          },
+          "hostname": null,
+          "type": "public",
+          "ipv4": "10.32.54.68",
+          "ipv6": null
+        }],
+        "hostname": "pmserv_1",
+        "type": "jboss",
+        "ports": {
+          "ssh": 22
+        },
+        "unit": 1
+      }],
+    "ports": {
+      "ssh": 22
+    }
+  }]

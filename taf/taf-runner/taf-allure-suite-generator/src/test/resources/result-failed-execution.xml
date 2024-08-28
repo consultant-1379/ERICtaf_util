@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:test-suite start="1449652085852" stop="1449652085852" version="1.4.16" xmlns:ns2="urn:model.allure.qatools.yandex.ru">
+    <name>Failed to get executed</name>
+    <title>Failed to get executed</title>
+    <test-cases>
+        <test-case start="1449652085852" stop="1449652085852" status="broken">
+            <name>skipped-suite1.xml</name>
+            <title>skipped-suite1.xml</title>
+            <labels>
+                <label name="severity" value="blocker"/>
+            </labels>
+            <failure>
+                <message>Suite "skipped-suite1.xml" is skipped due to failed execution</message>
+            </failure>
+        </test-case>
+        <test-case start="1449652085852" stop="1449652085852" status="broken">
+            <name>skipped-suite2.xml</name>
+            <title>skipped-suite2.xml</title>
+            <labels>
+                <label name="severity" value="blocker"/>
+            </labels>
+            <failure>
+                <message>Suite "skipped-suite2.xml" is skipped due to failed execution</message>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

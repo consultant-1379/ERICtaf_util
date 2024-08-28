@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="ParallelMultipleClass Suite" parallel="classes" thread-count="2">
+    <test name="ParallelMultipleClass Test">
+        <classes>
+            <class name="com.ericsson.cifwk.taf.testdata.ConfigMethodsTest" />
+            <class name="com.ericsson.cifwk.taf.testdata.ConfigMethodsTestCopy" />
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,13 @@
+// enable DSL support in IDEA, see https://confluence.jetbrains.com/display/GRVY/Scripting+IDE+for+DSL+awareness
+
+// Job DSL support for TAF jobs
+def ctx = context(pathRegexp: /.*\/jobs\/.*groovy/)
+contributor(ctx, {
+    delegatesTo(findClass('javaposse.jobdsl.dsl.DslFactory'))
+})
+
+// Job DSL support for example jobs
+ctx = context(pathRegexp: /.*\/examples\/.*groovy/)
+contributor(ctx, {
+    delegatesTo(findClass('javaposse.jobdsl.dsl.DslFactory'))
+})

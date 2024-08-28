@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:Messages
+        xmlns:p="https://raw.githubusercontent.com/amaembo/huntbugs/master/huntbugs/src/main/resources/huntbugs"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://raw.githubusercontent.com/amaembo/huntbugs/master/huntbugs/src/main/resources/huntbugs messages.xsd">
+    <WarningList>
+        <Warning Type="UiComponentLeak">
+            <Title>TAF UI View Model leaks UI component</Title>
+            <Description>Public method $CALLED_METHOD$ returns UiComponent or collection of them.</Description>
+            <LongDescription><![CDATA[Public method $CALLED_METHOD$ returns UiComponent or collection of them. It is recommended to encapsulate UI specific logic inside View Model. In that case UI component getters are not required.]]></LongDescription>
+        </Warning>
+        <Warning Type="UsageOfUiPause">
+            <Title>UI.pause used</Title>
+            <Description>Found usage of UI.pause</Description>
+            <LongDescription><![CDATA[UiComponent/ViewModel/BrowserTab.waitUntil... is a much more efficient and maintainable solution than UI.pause. It only waits until the component appears, whereas ui.pause waits a set amount of time regardless of when the component appears.]]></LongDescription>
+        </Warning>
+        <Warning Type="WaitForComponentBeforeUsage">
+            <Title>Waiting for UI component before usage</Title>
+            <Description>$SECOND_METHOD$ is called after $FIRST_METHOD$. Implicit wait already waits for 7 seconds until component is available before proceeding with action on it.</Description>
+            <LongDescription><![CDATA[<b>$SECOND_METHOD$</b> is called after <b>$FIRST_METHOD$</b>. Implicit wait already waits for 7 seconds until component is available before proceeding with action on it. If 7 seconds are not enough please implement explicit wait as method of your view model, e.g. <i>ensurePageIsLoaded()</i> or <i>waitForMySection()</i>.]]></LongDescription>
+        </Warning>
+        <Warning Type="UiSdkComponentNotUsed">
+            <Title>TAF UI SDK common component could be used</Title>
+            <Description>View model or Composite component has UI component mapping already defined in TAF UI SDK commoncomponent '$UI_COMPONENT$'.
+            </Description>
+            <LongDescription><![CDATA[View model has UI component mapping already defined in TAF UI SDK common component <b>'$UI_COMPONENT$'</b>. Please check <a href="https://confluence-nam.lmera.ericsson.se/display/TAF/UI-SDK+Composite+Components">UI-SDK+Composite+Components</a> page for supported components or <a href="https://gerrit.ericsson.se/#/admin/projects/OSS/com.ericsson.cds/uisdk-composite-components">uisdk-composite-components</a> repository for details.]]></LongDescription>
+        </Warning>
+        <Warning Type="UiComponentsCollectionGet">
+            <Title>Getting UI component from list by index</Title>
+            <Description>Iterating UI components by index is forbidden. TAF list of UI components is dynamic by default. Iterating by index is slow and you risk get IndexOutOfBoundsException.</Description>
+            <LongDescription><![CDATA[Iterating UI components by index is forbidden. TAF list of UI components is dynamic by default. Iterating by index is slow and you risk get IndexOutOfBoundsException (in case items count changed in background). Please use List iterator of Java for each iteration instead.]]></LongDescription>
+        </Warning>
+        <Warning Type="LongVersionOfCssSelector">
+            <Title>Long version of CSS selector is used</Title>
+            <Description>Long version of CSS selector is used. CSS type of selector is default one. You can define selector in value field without defining selector type.</Description>
+            <LongDescription><![CDATA[Long version of CSS selector is used. CSS type of selector is default one. You can define selector in value field without defining selector type. Please use @UiComponent("yourSelector") instead of @UiComponent(selector = "yourSelector", selectorType = SelectorType.CSS).]]></LongDescription>
+        </Warning>
+        <Warning Type="EmptySelector">
+            <Title>Neither value, nor selector annotation parameter is defined for @UiComponentMapping</Title>
+            <Description>Neither value, nor selector annotation parameter is defined for @UiComponentMapping.</Description>
+            <LongDescription><![CDATA[Neither value, nor selector annotation parameter is defined for @UiComponentMapping. Please define at least one.]]></LongDescription>
+        </Warning>
+        <Warning Type="TooManySelectorsDefined">
+            <Title>Both value and selector annotation parameters are defined for @UiComponentMapping</Title>
+            <Description>Both value and selector annotation parameters are defined for @UiComponentMapping.</Description>
+            <LongDescription><![CDATA[Both value and selector annotation parameters are defined for @UiComponentMapping. Please define at least one.]]></LongDescription>
+        </Warning>
+        <Warning Type="TestStepClassHierarchy">
+            <Title>TestStep classes should not extend any other classes</Title>
+            <Description>TestStep classes should not extend any other classes.</Description>
+            <LongDescription><![CDATA[There is no need for a class containing test steps to extend TafTestBase.
+If there is any logic which is common across test steps it should be put into an operator and an instance injected into the Test Steps class
+.]]></LongDescription>
+        </Warning>
+        <Warning Type="TestStepParameters">
+            <Title>When to change from individual parameters to a datarecord extension</Title>
+            <Description>When to change from individual parameters to a datarecord extension, maximum expected parameters count was
+                $EXPECTED_PARAMETERS$ but found $ACTUAL_PARAMETERS$ parameters</Description>
+            <LongDescription><![CDATA[If a test step has more than 8 parameters it should be analyzed to find out why, and if any thing can be done.
+Possible outcomes:
+The test step is doing too much and can be split into 2 or more test steps.
+The test step has to have this number of parameters and no change is required.
+Multiple test steps are using the same parameters, 5 or more, and a DataRecord extension can be used across these test steps
+.]]></LongDescription>
+        </Warning>
+        <Warning Type="FlowParameters">
+            <Title>Flow factory method parameters</Title>
+            <Description>Method returning flow should take the data source definition builder as a parameter</Description>
+            <LongDescription><![CDATA[Method returning flow should take the data source definition builder as a parameter.]]></LongDescription>
+        </Warning>
+        <Warning Type="MissingTestId">
+            <Title>Missing Test ID</Title>
+            <Description>Every test case should be mapped to a test ID in TMS</Description>
+            <LongDescription><![CDATA[Every test case should be mapped to a test ID in TMS.
+            This is done using either the @TestId annotation or the @TestSuite annotation and the test id in the data.
+            This is key for traceability of Epics to test cases. Currently in Allure Report, Behaviours tab shows it.]]></LongDescription>
+        </Warning>
+        <Warning Type="TestStepState">
+            <Title>Test Steps class is stateful</Title>
+            <Description>Test Steps should not maintain state</Description>
+            <LongDescription><![CDATA[A Test Step should not have any non-injected instance variables storing state. There should be only injected and static final instance variables in a Test Step class.]]></LongDescription>
+        </Warning>
+        <Warning Type="OperatorInjection">
+            <Title>Operator injects value</Title>
+            <Description>Always use Provider for Operator injection</Description>
+            <LongDescription><![CDATA[Always use Provider for Operator injection. This ensures separation of instances between threads for performance testing. @Inject Provider<MyOperatorImpl>.]]></LongDescription>
+        </Warning>
+        <Warning Type="OperatorInterfaceInjection">
+            <Title>Operator interface is injected</Title>
+            <Description>Do not use interfaces for the operators</Description>
+            <LongDescription><![CDATA[Do not use interfaces for the operators. Please inject the operator implementation directly via Provider.]]></LongDescription>
+        </Warning>
+        <Warning Type="OperatorClassHierarchy">
+            <Title>Operator extension</Title>
+            <Description>Don't extend a common operator with your specific implementation</Description>
+            <LongDescription><![CDATA[Don't extend a common operator with your specific implementation. This will end up in a mess of extensions, and possibly extensions of extensions. Discuss with the common operator owners about updating the operator to meet your needs.]]></LongDescription>
+        </Warning>
+        <Warning Type="TestStepDirectCall">
+            <Title>Test Steps are called as plain Java methods</Title>
+            <Description>Test Steps are called as plain Java methods</Description>
+            <LongDescription><![CDATA[Methods annotated by @TestStep should not be called directly in Java logic.]]></LongDescription>
+        </Warning>
+        <Warning Type="TestwarePackage">
+            <Title>Packaging by technical component</Title>
+            <Description>Packaging by functionality is preferred, packaging by technical component should be avoided</Description>
+            <LongDescription><![CDATA[Packaging by functionality is preferred, packaging by technical component should be avoided. E.g. functional packages ("cm", "fm", "pm") contain technical component packages ("flows", "operators", "teststeps", "viewmodels"), not vice versa.]]></LongDescription>
+        </Warning>
+        <Warning Type="TestClassHierarchy">
+            <Title>Test class hierarchy</Title>
+            <Description>Don't use inheritance to reuse common configuration code across test classes, delegate instead</Description>
+            <LongDescription><![CDATA[Don't use inheritance to reuse common configuration code across test classes, delegate instead. Code for configuration should be in a separate class and called in configuration methods of Test Classes. A test class should only extend TafTestBase. Failure to adhere to this can lead to unpredictable behaviour for TestNG Configuration Annotations. Please see https://www.petrikainulainen.net/programming/unit-testing/3-reasons-why-we-should-not-use-inheritance-in-our-tests/ for details.]]></LongDescription>
+        </Warning>
+        <Warning Type="TestStepSize">
+            <Title>Test Step size</Title>
+            <Description>A test step should not contain too little or too much logic</Description>
+            <LongDescription><![CDATA[A test step should not contain too little or too much logic, it should have a logical Single Responsibility (SRP), this can include verification of the interaction with the System Under Test. For example, a test step should not be a specific UI action, i.e. click a button, it should be a set of actions which logically group together. For example, create a user. Click the create user button, fill in the information, click ok/create.]]></LongDescription>
+        </Warning>
+        <Warning Type="FailingSummaryLoggerUsed">
+            <Title>FailingSummaryLogger used</Title>
+            <Description>FailingSummaryLogger should not be used as an Exception Handler when using Scenarios</Description>
+            <LongDescription><![CDATA[Failing Summary Logger class was initially created so that if a Test Step failed within a Flow, the other steps would continue to get executed. This was before the introduction of the alwaysRun() API. Failing Summary Logger should NOT be used any longer for the following reasons:
+            1. Hides the real cause of the problem.
+            2. Test Steps which rely on successful execution of previous test step(s) will run and fail. This is a pointless activity and causes increased execution time also.
+            3. In some cases it will cause environmental issues when test step failures occur.
+            4. Failures in a Test Step in one Scenario can cause failures in another Scenario if all test steps are to execute incorrectly.]]></LongDescription>
+        </Warning>
+        <Warning Type="AssertionFramework">
+            <Title>Assertion framework used is not recommended</Title>
+            <Description>Assertion Framework usage isn't enforced, but there is a recommendation.</Description>
+            <LongDescription><![CDATA[Assertion Framework usage isn't enforced, but there is a recommendation. Please see page https://taf.seli.wh.rnd.internal.ericsson.com/userdocs/Latest/recommendations/assertion-fwks.html for details.]]></LongDescription>
+        </Warning>
+        <Warning Type="CollectResultToDatasource">
+            <Title>Collect result to datasource</Title>
+            <Description>Flows which collect results (teststep output) to a datasource will take the datasource name as a parameter</Description>
+            <LongDescription><![CDATA[Flows which collect results (teststep output) to a datasource will take the datasource name as a parameter.
+            <pre>
+public TestStepFlowBuilder activateConfig(final String activationOutputDataSource,
+                                          TafDataSourceDefinitionBuilder<User> dataSource) {
+    return flow(ACTIVATE_CONFIG_FLOW_NAME)
+            .addTestStep(annotatedMethod(configTestSteps, ConfigTestSteps.StepIds.ACTIVATE)
+                    .collectResultToDatasource(activationOutputDataSource))
+            .withDataSources(dataSource);
+}
+            </pre>
+            Again, this gives flexibility to end users to name the populated datasource what they want. This makes the flow more reusable.
+]]></LongDescription>
+        </Warning>
+        <Warning Type="AssertionInOperator">
+            <Title>Assertion in Operator</Title>
+            <Description>Assertions should be in Test Steps, not in Operator</Description>
+            <LongDescription><![CDATA[All assertions should be made in TestSteps. No assertion should be made in Operator or any other class underneath that. Operator can throw exception using Preconditions.check that will mark the test step as broken.
+
+Rule for Test Status, Failure vs Broken.
+
+Teststep should mark as broken in below scenarios, if:
+    pre conditions fails or
+    an operation can not be performed. e.g could not connect to the system under test or
+    response of an operator can not be asserted. e.g. Http call returns 404 error
+Teststep should be marked as failed, if:
+    the response of operation is not matching with expected output.]]></LongDescription>
+        </Warning>
+    </WarningList>
+
+</p:Messages>

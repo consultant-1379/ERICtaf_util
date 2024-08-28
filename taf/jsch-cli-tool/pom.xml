@@ -1,0 +1,69 @@
+    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>taf</artifactId>
+        <groupId>com.ericsson.cifwk</groupId>
+        <version>2.76.2-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.ericsson.cifwk.taf</groupId>
+    <artifactId>jsch-cli-tool</artifactId>
+
+    <description>This is the JCraft/JSch implementation of the ClI Tool</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerId>javac</compilerId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>taf-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>cli-tool</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.expectj</groupId>
+            <artifactId>expectj</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.kamranzafar</groupId>
+            <artifactId>jtar</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.de</groupId>
+            <artifactId>cli-tool</artifactId>
+            <version>1.0.19</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.ericsson.cifwk.taf</groupId>
+                    <artifactId>jsch-cli-tool</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+    </project>

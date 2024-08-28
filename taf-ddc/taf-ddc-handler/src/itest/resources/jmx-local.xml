@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<instr xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="/opt/ericsson/ERICddc/util/etc/instr/schemas/instr.xsd">
+    <createdBy></createdBy>
+    <profile name="jmx-test">
+        <description>A profiler for a JVM using CMS Garbage Collection which monitors thread and memory</description>
+        <outputHandler type="taf" />
+        <provider type="jmx" name="JMX">
+            <searchString>.*terminator-standalone\.jar.*</searchString>
+            <metricGroup name="jvm-memory">
+                <mbeanName>java.lang:type=Memory</mbeanName>
+                <metric name="ObjectPendingFinalizationCount"/>
+                <compositeMetric name="HeapMemoryUsage">
+                    <metric name="committed"/>
+                    <metric name="init"/>
+                    <metric name="max"/>
+                    <metric name="used"/>
+                </compositeMetric>
+                <compositeMetric name="NonHeapMemoryUsage">
+                    <metric name="committed"/>
+                    <metric name="init"/>
+                    <metric name="max"/>
+                    <metric name="used"/>
+                </compositeMetric>
+            </metricGroup>
+            <metricGroup name="threads">
+                <mbeanName>java.lang:type=Threading</mbeanName>
+                <metric name="ThreadCount"/>
+                <metric name="PeakThreadCount"/>
+            </metricGroup>
+            <metricGroup name="gc_young">
+                <mbeanName>java.lang:type=GarbageCollector,name=PS Scavenge</mbeanName>
+                <metric name="CollectionCount"/>
+                <metric name="CollectionTime"/>
+            </metricGroup>
+            <metricGroup name="gc_old">
+                <mbeanName>java.lang:type=GarbageCollector,name=PS MarkSweep</mbeanName>
+                <metric name="CollectionCount"/>
+                <metric name="CollectionTime"/>
+            </metricGroup>
+        </provider>
+    </profile>
+</instr>
+

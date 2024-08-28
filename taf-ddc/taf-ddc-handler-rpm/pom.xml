@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ericsson.cifwk</groupId>
+        <artifactId>taf-ddc</artifactId>
+        <version>2.13.6-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>taf-ddc-handler-rpm</artifactId>
+    <packaging>rpm</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>taf-ddc-handler</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <com.ericsson.oss.rpm.architecture>noarch</com.ericsson.oss.rpm.architecture>
+        <!-- Install path = /${rpm-root}/${comp-name}/${install-path} -->
+        <rpm-root>opt</rpm-root>
+        <comp-name>ericsson</comp-name>
+        <install-path>ERICddc</install-path>
+        <!-- maven -->
+        <maven.site.skip>true</maven.site.skip>
+        <maven.site.deploy.skip>true</maven.site.deploy.skip>
+
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <skip>true</skip>
+                    <inherited>true</inherited>
+                    <copyright>2012 Ericsson AB All rights reserved</copyright>
+                    <summary>Taf-ddc-handler</summary>
+                    <packager>1.0</packager>
+                    <group>ERI-OSSRC</group>
+                    <vendor>Ericsson AB</vendor>
+                    <url>www.ericsson.com</url>
+                    <mappings>
+                        <mapping>
+                            <directory>/${rpm-root}/${comp-name}</directory>
+                            <filemode>775</filemode>
+                            <username>root</username>
+                            <groupname>root</groupname>
+                        </mapping>
+                        <mapping>
+                            <directory>/${rpm-root}/${comp-name}/${install-path}/lib</directory>
+                            <filemode>775</filemode>
+                            <username>root</username>
+                            <groupname>root</groupname>
+                            <configuration>false</configuration>
+                            <directoryIncluded>true</directoryIncluded>
+                            <recurseDirectories>true</recurseDirectories>
+                            <dependency/>
+                            <sources>
+                                <source>
+                                    <location>../taf-ddc-handler/src/main/resources/</location>
+                                    <includes>
+                                        <include>graphite.properties</include>
+                                    </includes>
+                                    <excludes>
+                                        <exclude>**/*.pyc</exclude>
+                                        <exclude>**/version.txt</exclude>
+                                        <exclude>**/*.gitignore</exclude>
+                                        <exclude>**/ETF.xml</exclude>
+                                        <exclude>**/*.sql</exclude>
+                                    </excludes>
+                                </source>
+                                <source>
+                                    <location>src/main/resources/</location>
+                                    <excludes>
+                                        <exclude>**/*.pyc</exclude>
+                                        <exclude>**/version.txt</exclude>
+                                        <exclude>**/*.gitignore</exclude>
+                                        <exclude>**/ETF.xml</exclude>
+                                        <exclude>**/*.sql</exclude>
+                                    </excludes>
+                                </source>
+                                <source>
+                                    <location>src/main/scripts/</location>
+                                    <excludes>
+                                        <exclude>**/*.pyc</exclude>
+                                        <exclude>**/postinstall.sh</exclude>
+                                        <exclude>**/preremove.sh</exclude>
+                                        <exclude>**/postremove.sh</exclude>
+                                        <exclude>**/*.gitignore</exclude>
+                                    </excludes>
+                                </source>
+                            </sources>
+                        </mapping>
+                    </mappings>
+                    <!--<preinstallScriptlet>
+                        <scriptFile>src/main/scripts/preinstall.sh</scriptFile>
+                        <fileEncoding>utf-8</fileEncoding>
+                    </preinstallScriptlet>-->
+                    <postinstallScriptlet>
+                        <scriptFile>src/main/scripts/postinstall.sh</scriptFile>
+                        <fileEncoding>utf-8</fileEncoding>
+                    </postinstallScriptlet>
+                    <preremoveScriptlet>
+                        <scriptFile>src/main/scripts/preremove.sh</scriptFile>
+                        <fileEncoding>utf-8</fileEncoding>
+                    </preremoveScriptlet>
+                    <!--<postremoveScriptlet>
+                        <scriptFile>src/main/scripts/postremove.sh</scriptFile>
+                        <fileEncoding>utf-8</fileEncoding>
+                    </postremoveScriptlet>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
+

@@ -1,0 +1,1 @@
+Please remove line: Import-Package: org.mozilla.xpcom

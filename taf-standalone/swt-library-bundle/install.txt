@@ -1,0 +1,4 @@
+mvn install:install-file -Dfile=org.eclipse.swtbot.swt.finder_2.2.1.jar -DgroupId=org.eclipse.swtbot.swt.finder -DartifactId=org.eclipse.swtbot.swt.finder -Dversion=2.2.1 -Dpackaging=jar
+
+echo mvn install:install-file -Dfile=org.eclipse.swtbot.generator_2.2.1.jar -DgroupId=org.eclipse.swtbot.generator -DartifactId=org.eclipse.swtbot.generator -Dversion=2.2.1 -Dpackaging=jar
+echo mvn install:install-file -Dfile=org.eclipse.core.runtime_3.9.100.jar -DgroupId=org.eclipse.core.runtime -DartifactId=org.eclipse.core.runtime -Dversion=3.9.100 -Dpackaging=jar

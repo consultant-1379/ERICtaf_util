@@ -1,0 +1,16 @@
+{
+  _id: "592c8cda82ee3e0020557633",
+  content: {
+    parameters: {
+      haproxy_ip_internal: "10.10.0.147",
+      haproxy_external_ip_address: "131.160.202.10",
+      haproxy_external_ipv6_address: "2001:1b70:6207:0027:0000:0874:1001:0007",
+      haproxysb_internal: "10.10.0.146",
+      haproxysb_external_ip_address: "131.160.202.22",
+      haproxysb_external_ipv6_address: "2001:1b70:6207:0027:0000:0874:1001:0006"
+    }
+  },
+  schema_id: "592e78e67369190021cd3daa",
+  name: "ieatenmpd201-1",
+  __v: 0
+}

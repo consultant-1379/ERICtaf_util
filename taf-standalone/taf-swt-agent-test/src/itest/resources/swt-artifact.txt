@@ -1,0 +1,1 @@
+swt.artifactId=${swt.artifactId};taf.version=${project.version}

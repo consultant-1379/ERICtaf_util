@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.ericsson.cifwk</groupId>
+        <artifactId>ERICtaf_util</artifactId>
+        <version>2.5.9-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ERICtaf_util_CXP9030250</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <publish_artifact>true</publish_artifact>
+        <delivery.drop>latest.R2A</delivery.drop>
+        <product>CI</product>
+        <packaging.type>pom</packaging.type>
+        <release.repo>releases</release.repo>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.ericsson.maven.plugins</groupId>
+                <artifactId>cifwk-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>taf-testware-to-database</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>publish-taf-testware</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>artifact-to-database</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>publish-artifact</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+</project>

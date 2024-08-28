@@ -1,0 +1,3 @@
+com.ericsson.cifwk.taf.testng.CompositeAnnotationTransformer
+com.ericsson.cifwk.taf.testng.TafTestApiEventDispatcher
+com.ericsson.cifwk.taf.testng.CompositeTestNGListener

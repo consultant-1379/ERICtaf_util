@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:test-suite start="1449652085852" stop="1449652085852" version="1.4.16" xmlns:ns2="urn:model.allure.qatools.yandex.ru">
+    <name>Failed to complete execution</name>
+    <title>Failed to complete execution</title>
+    <test-cases>
+        <test-case start="1449652085852" stop="1449652085852" status="broken">
+            <name>finished-suite-123.xml</name>
+            <title>finished-suite-123.xml</title>
+            <labels>
+                <label name="severity" value="blocker"/>
+            </labels>
+            <failure>
+                <message>Suite "finished-suite-123.xml" finished but result is unknown.</message>
+            </failure>
+        </test-case>
+        <test-case start="1449652085852" stop="1449652085852" status="broken">
+            <name>failed-suite-123.xml</name>
+            <title>failed-suite-123.xml</title>
+            <labels>
+                <label name="severity" value="blocker"/>
+            </labels>
+            <failure>
+                <message>Suite "failed-suite-123.xml" didn't finish due to failed execution.</message>
+            </failure>
+        </test-case>
+        <test-case start="1449652085852" stop="1449652085852" status="broken">
+            <name>skipped-suite-123.xml</name>
+            <title>skipped-suite-123.xml</title>
+            <labels>
+                <label name="severity" value="blocker"/>
+            </labels>
+            <failure>
+                <message>Suite "skipped-suite-123.xml" is skipped due to failed execution.</message>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

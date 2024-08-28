@@ -1,0 +1,10 @@
+[
+    {
+        "hostname": "folder.2.host",
+        "ip": "exist",
+        "type": "UNKNOWN",
+        "ports": {},
+        "offset":20,
+        "tunnel":21
+    }
+]

@@ -1,0 +1,6 @@
+sourceRoot: src
+#outputRoot: out
+data: tdd(data/data.tdd)
+removeExtensions: [ftl]
+logFile: log.fmpp
+#datetimeFormat: "MMM d, yyyy hh:mm a zzz"

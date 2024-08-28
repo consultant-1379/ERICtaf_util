@@ -1,0 +1,23 @@
+#!/bin/sh
+INST_ROOT="/opt/ericsson/ERICddc/lib"
+
+# Rename jar files that we reference in the CLASSPATH
+logger "Jar placed in ${INST_ROOT}"
+
+sleep 90
+logger "Editing ddc template" 
+if [ -f "/etc/init.d/ddc" ]; then
+    service ddc stop 
+fi
+
+
+if grep "outputHandler" /opt/ericsson/ddc/util/etc/instr/templates/genericJmx_ip.template.xml
+then
+    logger "outputHandler already added to template"
+else 
+    sleep 60
+    logger "outputHandler not found in template adding it now" 
+    sed -i 's/<\/description>/<\/description>\n<outputHandler type="taf"\/>/' /opt/ericsson/ddc/util/etc/instr/templates/genericJmx_ip.template.xml
+    cat /opt/ericsson/ddc/util/etc/instr/templates/genericJmx_ip.template.xml >>template.txt 
+    logger " output handler added"
+fi

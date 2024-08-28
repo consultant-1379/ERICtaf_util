@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Automatic close browser tests"
+       configfailurepolicy="continue"
+       parallel="methods"
+       thread-count="10"
+       verbose="8"
+       time-out="1000000">
+    <parameter name="taf.vusers" value="1"/>
+    <test name="2 test classes" preserve-order="false">
+        <classes>
+            <class name="com.ericsson.cifwk.taf.ui.UICloseWindowsConcurrencyTest$InitBrowserClass"/>
+            <class name="com.ericsson.cifwk.taf.ui.UICloseWindowsConcurrencyTest$InitBrowserClass2"/>
+        </classes>
+    </test>
+</suite>

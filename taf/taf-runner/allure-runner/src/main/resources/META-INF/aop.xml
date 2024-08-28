@@ -1,0 +1,6 @@
+<aspectj>
+    <weaver options="">
+        <!-- double periods for subpackages -->
+        <include within="com.ericsson..*"/>
+    </weaver>
+ </aspectj>

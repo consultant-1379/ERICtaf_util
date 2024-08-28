@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "networkMap": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "ip": {
+            "type": "string",
+            "oneOf": [
+              { "format": "ipv4" },
+              { "format": "ipv6" }
+            ]
+          },
+          "type": {
+            "type": "string"
+          },
+          "techType": {
+            "type": "string"
+          },
+          "nodeType": {
+            "type": "string"
+          },
+          "mim": {
+            "type": "string"
+          },
+          "Simulation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "ip",
+          "type",
+          "techType",
+          "nodeType",
+          "mim",
+          "Simulation"
+        ]
+      }
+    }
+  },
+  "required": [
+    "networkMap"
+  ]
+}

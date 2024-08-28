@@ -1,0 +1,377 @@
+[
+    {
+        "hostname": "ms1",
+        "ip": "0.0.0.1",
+        "type": "ms",
+        "users": [
+            {"username": "root", "password": "shroot", "type": "admin"}
+        ],
+        "ports": {"ssh": 22}
+    },
+    {
+        "hostname": "sc1",
+        "ip": "0.0.0.2",
+        "type": "sc1",
+        "users": [
+            {"username": "root", "password": "cobbler", "type": "admin"}
+        ],
+        "ports": {"ssh": 22},
+        "nodes": [
+            {
+                "hostname": "jboss1",
+                "ip": "0.0.0.2",
+                "type": "jboss",
+                "users": [
+                    {"username": "root", "password": "shroot", "type": "admin"},
+                    {"username": "guest", "password": "guestp", "type": "oper"}
+                ],
+                "ports": {
+                    "http": 8080, "rmi": 4447, "jmx": 9999, "jboss_management": 9999
+                }
+            }
+        ]
+    },
+    {
+        "hostname": "CI-Netsim",
+        "ip": "0.0.0.3",
+        "type": "netsim",
+        "users": [
+            {"username": "netsim", "password": "netpass"}
+        ],
+        "ports": {"ssh": 2202}
+    },
+    {
+        "hostname": "BadHost",
+        "ip": "0.0.0.4",
+        "type": "NotFound",
+        "users": [
+            {"username": "netsim", "password": "netpass", "type": "NotFound"}
+        ],
+        "ports": {
+            "http": 8080, "myPort": 1234
+        }
+    },
+    {
+        "hostname": "masterservice",
+        "ip": "10.45.17.210",
+        "type": "rc",
+        "users": [
+            {
+                "username": "root",
+                "password": "shroot",
+                "type": "admin"
+            },
+            {
+                "username": "nmsadm",
+                "password": "nms275",
+                "type": "oper"
+            }
+        ],
+        "ports": {
+            "ssh": 22
+        }
+    },
+    {
+        "hostname": "atrcxb1601",
+        "ip": "10.45.17.230",
+        "type": "uas",
+        "users": [
+            {
+                "username": "root",
+                "password": "shroot",
+                "type": "admin"
+            },
+            {
+                "username": "nmsadm",
+                "password": "nms275",
+                "type": "oper"
+            },
+            {
+                "username": "plmuser1",
+                "password": "ldap4444",
+                "type": "ope"
+            }
+        ],
+        "ports": {
+            "ssh": 22
+        }
+    },
+    {
+        "group": "haproxy",
+        "users": [{
+            "username": "root",
+            "password": "passw0rd",
+            "type": "admin"
+        }],
+        "interfaces": [{
+                "ports": {
+                    "http": 80,
+                    "https": 443
+                },
+                "hostname": "ieatENM5340-1",
+                "type": "public",
+                "ipv4": "ieatENM5340-1.athtem.eei.ericsson.se",
+                "ipv6": null
+            },
+            {
+                "ports": {
+                    "http": 80,
+                    "https": 443
+                },
+                "hostname": null,
+                "type": "storage",
+                "ipv4": "10.140.41.8",
+                "ipv6": null
+            },
+            {
+                "tunnel": 24,
+                "hostname": null,
+                "ipv4": "10.247.246.10",
+                "ipv6": null,
+                "type": "internal",
+                "ports": {
+                    "http": 80,
+                    "https": 443
+                }
+        }],
+        "hostname": "haproxy_0",
+        "type": "httpd",
+        "ports": {
+            "ssh": 22
+        },
+        "unit": 0
+    },
+    {
+        "group": "int_haproxy",
+        "users": [{
+            "username": "root",
+            "password": "passw0rd",
+            "type": "admin"
+        }],
+        "interfaces": [{
+            "ports": {
+                "http": 80,
+                "https": 443
+            },
+            "hostname": null,
+            "type": "public",
+            "ipv4": null,
+            "ipv6": null
+        },
+        {
+            "ports": {
+                "http": 80,
+                "https": 443
+            },
+            "hostname": null,
+            "type": "storage",
+            "ipv4": "10.140.41.114",
+            "ipv6": null
+        },
+        {
+            "tunnel": 47,
+            "hostname": null,
+            "ipv4": "10.247.246.116",
+            "ipv6": null,
+            "type": "internal",
+            "ports": {
+                "http": 80,
+                "https": 443
+            }
+        }],
+        "hostname": "int_haproxy_0",
+        "type": "httpd",
+        "ports": {
+            "ssh": 22
+        },
+        "unit": 0
+    },
+    {
+        "group": "netsim",
+        "users": [{
+            "username": "root",
+            "password": "passw0rd",
+            "type": "admin"
+        }],
+        "interfaces": [{
+            "ports": {
+                "http": 80,
+                "https": 443
+            },
+            "hostname": null,
+            "type": "public",
+            "ipv4": null,
+            "ipv6": null
+        },
+        {
+            "ports": {
+                "http": 80,
+                "https": 443
+            },
+            "hostname": null,
+            "type": "storage",
+            "ipv4": "10.140.41.114",
+            "ipv6": null
+        },
+        {
+            "tunnel": 47,
+            "hostname": null,
+            "ipv4": "10.247.246.116",
+            "ipv6": null,
+            "type": "internal",
+            "ports": {
+                "http": 80,
+                "https": 443
+            }
+        }],
+        "hostname": "abcd",
+        "type": "netsim",
+        "ports": {
+            "ssh": 22
+        },
+        "unit": 0
+    },
+    {
+        "group": "netsim",
+        "users": [
+            {
+                "username": "root",
+                "password": "passw0rd",
+                "type": "admin"
+            }
+        ],
+        "interfaces": [
+            {
+                "ports": {
+                    "http": 80,
+                    "https": 443
+                },
+                "hostname": null,
+                "type": "public",
+                "ipv4": null,
+                "ipv6": null
+            },
+            {
+                "ports": {
+                    "http": 80,
+                    "https": 443
+                },
+                "hostname": null,
+                "type": "storage",
+                "ipv4": "10.140.41.114",
+                "ipv6": null
+            },
+            {
+                "tunnel": 47,
+                "hostname": null,
+                "ipv4": "10.247.246.116",
+                "ipv6": null,
+                "type": "internal",
+                "ports": {
+                    "http": 80,
+                    "https": 443
+                }
+            }
+        ],
+        "hostname": "def",
+        "type": "netsim",
+        "ports": {
+            "ssh": 22
+        },
+        "unit": 0
+    },
+    {
+        "hostname": "svc1",
+        "interfaces": [
+            {
+                "hostname": null,
+                "ipv4": "192.168.0.202",
+                "ipv6": "2001:1b70:82a1:103::194",
+                "ports": {
+                    "ssh": 22
+                },
+                "type": "public"
+            }
+        ],
+        "nodes": [
+            {
+                "group": "pmserv",
+                "hostname": "pmserv_1",
+                "interfaces": [
+                    {
+                        "hostname": null,
+                        "ipv4": null,
+                        "ipv6": null,
+                        "ports": {
+                            "http": 8080,
+                            "https": 443,
+                            "jboss_management": 9999,
+                            "jmx": 9999,
+                            "rmi": 4447,
+                            "ssh": 22
+                        },
+                        "type": "public"
+                    },
+                    {
+                        "hostname": null,
+                        "ipv4": "172.16.30.112",
+                        "ipv6": null,
+                        "ports": {
+                            "http": 8080,
+                            "https": 443,
+                            "jboss_management": 9999,
+                            "jmx": 9999,
+                            "rmi": 4447,
+                            "ssh": 22
+                        },
+                        "type": "storage"
+                    },
+                    {
+                        "hostname": null,
+                        "ipv4": "10.247.246.112",
+                        "ipv6": null,
+                        "ports": {
+                            "http": 8080,
+                            "https": 443,
+                            "jboss_management": 9999,
+                            "jmx": 9999,
+                            "rmi": 4447,
+                            "ssh": 22
+                        },
+                        "type": "internal"
+                    },
+                    {
+                        "hostname": null,
+                        "ipv4": "10.247.246.112",
+                        "ipv6": null,
+                        "ports": {
+                            "http": 8080,
+                            "https": 443,
+                            "jboss_management": 9999,
+                            "jmx": 9999,
+                            "rmi": 4447,
+                            "ssh": 22
+                        },
+                        "type": "jgroup"
+                    }
+                ],
+                "ports":
+                {
+                    "ssh": 22
+                },
+                "type": "jboss",
+                "unit": 1,
+                "users":
+                [
+                    {
+                        "password": "dummy",
+                        "type": "oper",
+                        "username": "cloud-user"
+                    }
+                ]
+            }
+        ],
+        "type": "svc1"
+    }
+
+]

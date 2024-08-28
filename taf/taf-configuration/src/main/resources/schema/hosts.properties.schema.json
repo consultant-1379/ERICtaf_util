@@ -1,0 +1,313 @@
+{
+    "type": "array",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "required": true,
+    "items": [
+        {
+            "type": "object",
+            "required": false,
+            "properties": {
+                "hostname": {
+                    "type": "string",
+                    "required": true,
+                    "id": "hostname"
+                },
+                "iloInfo": {
+                  "type": "object",
+                  "required": false,
+                  "properties": {
+                    "hostname": {
+                      "type": "string",
+                      "required": true,
+                      "id": "hostname"
+                    },
+                    "ip": {
+                      "type": "string",
+                      "required": true,
+                      "id": "ip"
+                    },
+                    "type": {
+                      "type": "string",
+                      "required": true,
+                      "id": "type"
+                    },
+                    "ports": {
+                      "type": "object",
+                      "required": true,
+                      "id": "ports",
+                      "patternProperties": {
+                        "[A-Za-z][A-Za-z0-9\\_]+": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "users": {
+                      "type": "array",
+                      "required": false,
+                      "id": "users",
+                      "items": [
+                        {
+                          "type": "object",
+                          "required": true,
+                          "properties": {
+                            "username": {
+                              "type": "string",
+                              "required": true,
+                              "id": "username"
+                            },
+                            "password": {
+                              "type": "string",
+                              "required": true,
+                              "id": "username"
+                            },
+                            "type": {
+                              "type": "string",
+                              "required": false,
+                              "id": "type"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "ip": {
+                    "type": "string",
+                    "required": true,
+                    "id": "ip"
+                },
+                "type": {
+                    "type": "string",
+                    "required": true,
+                    "id": "type"
+                },
+                "ports": {
+                    "type": "object",
+                    "required": true,
+                    "id": "ports",
+                    "patternProperties": {
+                        "[A-Za-z][A-Za-z0-9\\_]+": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "offset": {
+                    "type": "integer",
+                    "required": false,
+                    "id": "offset"
+                },
+                "group": {
+                    "type": "string",
+                    "required" : false,
+                    "id": "group"
+                },
+                "unit": {
+                    "type": "string",
+                    "required" : false,
+                    "id": "unit"
+                },
+                "tunnel": {
+                    "type": "integer",
+                    "required": false,
+                    "id": "tunnel"
+                },
+                "users": {
+                    "type": "array",
+                    "required": false,
+                    "id": "users",
+                    "items": [
+                        {
+                            "type": "object",
+                            "required": true,
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "username"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "username"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "required": false,
+                                    "id": "type"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "interfaces": {
+                    "type": "array",
+                    "required": false,
+                    "id": "interfaces",
+                    "items": [
+                            {
+                            "type": "object",
+                            "required": false,
+                            "properties": {
+                                "hostname": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "hostname"
+                                },
+                                "ipv4": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "ipv4"
+                                },
+                                "ipv6": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "ipv6"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "type"
+                                },
+                                "ports": {
+                                    "type": "object",
+                                    "required": true,
+                                    "id": "ports",
+                                    "patternProperties": {
+                                        "[A-Za-z][A-Za-z0-9\\_]+": {
+                                            "type": "integer"
+                                        }
+                                   }
+                              }}}
+                         ]
+                     },
+                "nodes": {
+                    "type": "array",
+                    "required": false,
+                    "id": "nodes",
+                    "items": [
+                        {
+                            "type": "object",
+                            "required": false,
+                            "properties": {
+                                "hostname": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "hostname"
+                                },
+                                "ip": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "ip"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "type"
+                                },
+                                "ports": {
+                                    "type": "object",
+                                    "required": true,
+                                    "id": "ports",
+                                    "patternProperties": {
+                                        "[A-Za-z][A-Za-z0-9\\_]+": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                },
+                                "offset": {
+                                    "type": "integer",
+                                    "required": false,
+                                    "id": "offset"
+                                },
+                                "tunnel": {
+                                    "type": "integer",
+                                    "required": false,
+                                    "id": "tunnel"
+                                },
+                                "group": {
+                                    "type": "string",
+                                    "required" : false,
+                                    "id": "group"
+                                },
+                                "unit": {
+                                    "type": "string",
+                                    "required" : false,
+                                    "id": "unit"
+                                },
+                                                "interfaces": {
+                    "type": "array",
+                    "required": false,
+                    "id": "interfaces",
+                    "items": [
+                            {
+                            "type": "object",
+                            "required": false,
+                            "properties": {
+                                "hostname": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "hostname"
+                                },
+                                "ipv4": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "ipv4"
+                                },
+                                "ipv6": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "ipv6"
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "required": true,
+                                    "id": "type"
+                                },
+                                "ports": {
+                                    "type": "object",
+                                    "required": true,
+                                    "id": "ports",
+                                    "patternProperties": {
+                                        "[A-Za-z][A-Za-z0-9\\_]+": {
+                                            "type": "integer"
+                                        }
+                                   }
+                              }}}
+                         ]
+                     },
+                                "users": {
+                                    "type": "array",
+                                    "required": false,
+                                    "id": "users",
+                                    "items": [
+                                        {
+                                            "type": "object",
+                                            "required": true,
+                                            "properties": {
+                                                "username": {
+                                                    "type": "string",
+                                                    "required": true,
+                                                    "id": "username"
+                                                },
+                                                "password": {
+                                                    "type": "string",
+                                                    "required": true,
+                                                    "id": "username"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "required": false,
+                                                    "id": "type"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

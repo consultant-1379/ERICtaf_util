@@ -1,0 +1,22 @@
+{
+  "networkMap": [
+    {
+      "name": "K3C114101",
+      "ip": "192.168.105",
+      "type": "WCDMA M-MGw C1141-V2lim",
+      "techType": "WCDMA",
+      "nodeType": "M-MGw",
+      "mim": "C1141-V2lim",
+      "Simulation": "CORE-3K-ST-MGw-C1141-14Bx20"
+    },
+    {
+      "name": "K3C114102",
+      "ip": "192.168.105.228",
+      "type": "WCDMA M-MGw C1141-V2lim",
+      "techType": "WCDMA",
+      "nodeType": "M-MGw",
+      "mim": "C1141-V2lim",
+      "Simulation": "CORE-3K-ST-MGw-C1141-14Bx20"
+    }
+  ]
+}

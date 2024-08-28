@@ -1,0 +1,39 @@
+[
+  {
+    "hostname": "third",
+    "ip": "10.43.251.3",
+    "type": "svc1",
+    "users": [
+      {
+        "username": "root",
+        "password": "shroot",
+        "type": "admin"
+      }
+    ],
+    "ports": {
+        "http": 80,
+        "https": 443
+    },
+    "offset":3,
+    "tunnel":4
+  },
+  {
+    "hostname": "fourth",
+    "ip": "10.43.251.3",
+    "type": "svc2",
+    "users": [
+      {
+        "username": "root",
+        "password": "shroot",
+        "type": "admin"
+      }
+    ],
+    "ports": {
+      "http": 8080,
+      "https": 8443,
+      "ssh":22
+    },
+    "offset":3,
+    "tunnel":4
+  }
+]

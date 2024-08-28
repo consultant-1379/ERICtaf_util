@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ericsson.cifwk</groupId>
+        <artifactId>taf-findbugs</artifactId>
+        <version>${my-project-version}</version>
+        <!--<version>2.29.26-SNAPSHOT</version>-->
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>taf-findbugs-sample</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>all-taf-sdk</artifactId>
+            <version>${project.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>taf-api-scanner</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.nms</groupId>
+            <artifactId>EnmBase</artifactId>
+            <version>1.1.670</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.truth/truth -->
+        <dependency>
+            <groupId>com.google.truth</groupId>
+            <artifactId>truth</artifactId>
+        </dependency>
+
+        <!-- For testing HuntBugs detectors only (should be removed once detector tests are located in taf-huntbugs-plugin -->
+        <dependency>
+            <groupId>one.util</groupId>
+            <artifactId>huntbugs</artifactId>
+            <version>0.0.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.cifwk</groupId>
+            <artifactId>taf-huntbugs-plugin</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <compilerId>javac</compilerId>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+                <dependencies>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.3</version>
+                <configuration>
+                    <plugins>
+                        <plugin>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>taf-findbugs-plugin</artifactId>
+                            <version>${project.version}</version>
+                        </plugin>
+                    </plugins>
+                    <failOnError>false</failOnError>
+                    <fork>false</fork>
+                    <threshold>Low</threshold>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>check-code</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <!--
+                    This dependency is required for TAF integration tests ONLY
+                    (since they are launched without building .jar file).
+
+                    When using taf findbugs plugin in external project
+                    this dependency WILL already BE EMBEDDED.
+                    -->
+                    <dependency>
+                        <groupId>com.ericsson.cifwk</groupId>
+                        <artifactId>taf-api-resource</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>one.util</groupId>
+                <artifactId>huntbugs-maven-plugin</artifactId>
+                <version>0.0.11</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.ericsson.cifwk</groupId>
+                        <artifactId>taf-huntbugs-plugin</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>huntbugs-check</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>huntbugs</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
